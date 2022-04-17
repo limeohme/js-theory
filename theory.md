@@ -578,7 +578,29 @@ console.log(self.birthday.day); //24
 const doppelganger = JSON.parse(JSON.stringify(self)); 
 ```
 ```
-//Using lodash
+// Using lodash
 const doppelganger = _.cloneDeep(self);
 ```
-#### 
+#### this.thing
+
+```
+const stranger1 = {
+  name: 'Steve'
+};
+const stranger2 = {name: 'Dave'};
+
+function getName() {
+  console.log('Speak your name, stranger!');
+  console.log(`My name is ${this.name}`);
+}
+
+stranger1.speak = getName;
+stranger2.speak = getName;
+
+stranger1.speak()
+/* Speak your name, stranger!
+My name is Steve */
+stranger2.speak()
+/* Speak your name, stranger!
+My name is Dave */
+```
