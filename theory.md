@@ -581,6 +581,35 @@ const doppelganger = JSON.parse(JSON.stringify(self));
 // Using lodash
 const doppelganger = _.cloneDeep(self);
 ```
+##### Destructuring objects 
+
+```
+const numArray = [2, 3, 4, 5, 6, 7];
+let a, restOfArr;
+[a, ...restOfArr] = numArray;
+// a = 2;
+// restOfArr = [3, 4, 5, 6, 7];
+
+let [m, , n, , o] = numArray;
+console.log(m, n, o) // 2 4 6
+```
+
+```
+const self = {
+  name: 'Liya',
+  birthday: {
+      day: 24,
+      month: '',
+      year: 1998
+  },
+  skills: null,
+  haircolour: 'dark brown',
+  eyecolour: 'green' 
+}
+
+let {name, eyecolour} = self;
+console.log(`${name} has ${eyecolour} eyes.`); // Liya has green eyes.
+```
 #### this.thing
 
 ```
@@ -609,3 +638,4 @@ The value of this is the object “before dot”, the one used to call the metho
 - The value of this is evaluated during the run-time, depending on the context.
 - In the example above the same function is assigned to two different objects and has different “this” in the calls
 
+#### Linked Lists
