@@ -639,3 +639,80 @@ The value of this is the object “before dot”, the one used to call the metho
 - In the example above the same function is assigned to two different objects and has different “this” in the calls
 
 #### Linked Lists
+
+A **linked list** is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. 
+
+\+ Nodes can easily be removed or added from a linked list without reorganizing the entire data structure. 
+\- Search operations are slow in linked lists. Unlike arrays, random access of data elements is not allowed. Nodes are accessed sequentially starting from the first node.  
+
+![Alt text](https://pbs.twimg.com/media/FQWxavtUYAk2vsT.jpg "a title")
+
+###### Creating linked list from array
+
+```
+function toLinkedList (array) {
+    let list = {};
+    let c = 0;
+
+    while (c <= array.length - 1) {
+        list['value'] = array[c];
+        array.shift()
+        
+        if (c === array.length - 1) {
+            list['next'] = null;
+        } else list['next'] = toLinkedList(array);
+        c++;
+    }
+    
+    return list;
+}
+const linkedList = toLinkedList([8, 12, -31, 8, 6]);
+console.log(linkedList); // { value: 8, next: { value: 12, next: { value: -31, next: [Object] } } }
+//---------------------------------------------------\\
+function toLinkedNoRec (array) {
+    let link = {};
+    let list = null;
+
+    for (let i = array.length; i >= 0; i--) {
+        link = {value: array[i], next: list};
+        list = link;
+    };
+    return list;
+}
+
+const linkedList1 = toLinkedNoRec([8, 12, -31, 8, 6]);
+console.log(linkedList1); // { value: 8, next: { value: 12, next: { value: -31, next: [Object] } } }
+```
+##### Search for a value in linked list
+```
+function find(linkedList, value) {
+    let valueFound = false;
+    let list = linkedList
+    while (list.next !== null) {
+        if (list.value === value) {
+            valueFound = true;
+            break;
+        }
+        list = list.next;
+    }
+    return valueFound;
+}
+
+const linkedList2 = toLinkedList(['pesho', 'gosho', 'tosho']);
+console.log(`${find(linkedList2, 'lily')}, Lily's not here`); // false, Lily's not here
+console.log(`${find(linkedList2, 'pesho')}, Pesho's here`); // true, Pesho's here
+```
+##### From LL to Array
+
+```
+function arrayIT(linkedList) {
+    let LLArr = [];
+    let list = linkedList
+    while (list.next !== null) {
+        LLArr.push(list.value)
+        list = list.next;
+    } 
+    return LLArr;
+}
+// console.log(arrayIT(linkedList1)); // code above needed
+```
