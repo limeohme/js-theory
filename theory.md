@@ -604,3 +604,8 @@ stranger2.speak()
 /* Speak your name, stranger!
 My name is Dave */
 ```
+The value of this is the object “before dot”, the one used to call the method.
+- In JavaScript, keyword this behaves unlike most other programming languages. It can be used in any function, even if it’s not a method of an object.
+- The value of this is evaluated during the run-time, depending on the context.
+- In the example above the same function is assigned to two different objects and has different “this” in the calls
+
