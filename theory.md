@@ -654,11 +654,11 @@ function toLinkedList (array) {
     let list = {};
     let c = 0;
 
-    while (c <= array.length - 1) {
+    while (c <= array.length) {
         list['value'] = array[c];
         array.shift()
         
-        if (c === array.length - 1) {
+        if (c === array.length) {
             list['next'] = null;
         } else list['next'] = toLinkedList(array);
         c++;
@@ -667,13 +667,15 @@ function toLinkedList (array) {
     return list;
 }
 const linkedList = toLinkedList([8, 12, -31, 8, 6]);
-console.log(linkedList); // { value: 8, next: { value: 12, next: { value: -31, next: [Object] } } }
-//---------------------------------------------------\\
+//console.log(linkedList);
+
+//---------------------------------------------------------\\
+
 function toLinkedNoRec (array) {
     let link = {};
     let list = null;
 
-    for (let i = array.length; i >= 0; i--) {
+    for (let i = array.length-1; i >= 0; i--) {
         link = {value: array[i], next: list};
         list = link;
     };
@@ -685,34 +687,48 @@ console.log(linkedList1); // { value: 8, next: { value: 12, next: { value: -31, 
 ```
 ##### Search for a value in linked list
 ```
-function find(linkedList, value) {
+function find (linkedList, value) {
     let valueFound = false;
     let list = linkedList
-    while (list.next !== null) {
+    while (true) {
         if (list.value === value) {
             valueFound = true;
             break;
         }
+        if (list.next === null) {
+            if (list.value === value) {
+                valueFound = true;
+                break;
+            }
+            break;
+        }
         list = list.next;
-    }
+    }  
+    
     return valueFound;
 }
 
 const linkedList2 = toLinkedList(['pesho', 'gosho', 'tosho']);
-console.log(`${find(linkedList2, 'lily')}, Lily's not here`); // false, Lily's not here
-console.log(`${find(linkedList2, 'pesho')}, Pesho's here`); // true, Pesho's here
+const linkedList3 = toLinkedNoRec(['pesho', 'gosho', 'tosho']);
+// console.log(`${find(linkedList2, 'lily')}, Lily's not here`); // false
+// console.log(`${find(linkedList2, 'pesho')}, Pesho's here`); // true
 ```
 ##### From LL to Array
 
 ```
-function arrayIT(linkedList) {
+function arrayIT (linkedList) {
     let LLArr = [];
     let list = linkedList
-    while (list.next !== null) {
+    while (true) {
         LLArr.push(list.value)
         list = list.next;
+        if(list.next === null) {
+            LLArr.push(list.value)
+            break;
+        }
     } 
     return LLArr;
 }
-// console.log(arrayIT(linkedList1)); // code above needed
+console.log(arrayIT(linkedList2));
+// code above needed
 ```
