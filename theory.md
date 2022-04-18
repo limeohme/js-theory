@@ -643,6 +643,7 @@ The value of `this` is the object “before dot”, the one used to call the met
 A **linked list** is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. 
 
 \+ Nodes can easily be removed or added from a linked list without reorganizing the entire data structure. 
+
 \- Search operations are slow in linked lists. Unlike arrays, random access of data elements is not allowed. Nodes are accessed sequentially starting from the first node.  
 
 ![Alt text](https://pbs.twimg.com/media/FQWxavtUYAk2vsT.jpg "a title")
