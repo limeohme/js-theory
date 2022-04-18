@@ -917,3 +917,10 @@ function fallInLove(){
   return love
 }
 ```
+#### Closure
+
+Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
+
+- As far as I'm concerned `closure` is the ability of functions to remember and to carry whatever they need for their execution even if it happens away from their birthplace. 
+
+![Alt text](https://64.media.tumblr.com/e5bcac2ad89c8de6c815a3dd8990c01a/tumblr_ofhy8yIRVx1vfdr29o1_400.gifv "a title")
