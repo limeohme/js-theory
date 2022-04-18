@@ -763,8 +763,15 @@ console.log(happy) //ReferenceError: happy is not defined
 - Lexical scope is determined by the way the code is written. In other words, an item's lexical scope is the place in which the item got created. The place an item got invoked (or called) is not necessarily the item's lexical scope. Instead, an item's definition space is its lexical scope.
 
 ***Looking for variables happens from the inside going outwards; The internal scopes can reach the variables in the external scope but not the other way around: If you're inside the house you can see the people outside but they cannot see you.*** 
+##### Hoisting
+- JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
+- In preparation for execution (which will be done line by line) the whole code is read and compiled, and in this process the declarations in the code seem to have happened at the top. Declarations themselves are hoisted, but assignments, even assignments of function expressions, are not hoisted. 
 
-###### Hoisting - `lets` and `consts` are hoisted without actual definition and will throw an error if you tried to reach them "above" their declaration point
+*most of the declarations haven't really happened so don't try to abuse the hoisting fact, it can't help you*
+
+Hoisting allows functions to be safely used in code before they are declared.
+###### Hoisting `let` & `const`
+`lets` and `consts` are hoisted without actual definition and will throw an error if you tried to reach them "above" their declaration point
 
 `var`
 - variables declared with the `var` keyword don't have block-scope and they can be reached from everywhere in the file/module 
@@ -772,16 +779,79 @@ console.log(happy) //ReferenceError: happy is not defined
 ```
 let love = true;
 if (love === true) {
-  var happy;
+  var happy = null;
   love === false;
 } else {
   love === true;
 }
 
-console.log(happy); // undefined
+console.log(happy); // null
 console.log(love) // false
-console.log(happy) //ReferenceError: happy is not defined
 ```
 
-Now we can read the value of happy from the outside (even if we haven't actually assigned a value to it because we are not sure how we feel)
+Now we can read the value of happy from the outside (even if we haven't actually assigned a meaningful value to it because we are not sure how we feel)
 
+###### Hoisting `var`
+`vars` are hoisted with declaration but without the initializing value if one was given; read from above they equal `undefined`
+
+```
+console.log(happy) //undefined
+let love = true;
+if (love === true) {
+  var happy === null;
+  love === false;
+} else {
+  love === true;
+}
+```
+##### **Function scope**
+
+- Functions create a scope that is indipendent from the outside field. That said, they can still look for variables on the outside, but the variables declared inside them can only be reached from the inside
+
+```
+console.log(happy); // ReferenceError: happy is not defined
+
+function fallInLove(){
+  let love = true;
+  if (love === true) {
+    var happy = null;
+    love = false;
+  } else {
+    love === true;
+  }
+}
+console.log(love) // ReferenceError: love is not defined
+console.log(happy); // ReferenceError: happy is not defined
+```
+Of course, if I return `love` I can get its value from the outside:
+
+```
+function fallInLove(){
+  let love = true;
+  if (love === true) {
+    happy = null;
+    love = false;
+  } else {
+    love === true;
+  }
+  return love
+}
+console.log(fallInLove()); // false
+```
+
+###### !!! `let`, `const` and `var` - declared variables have function scope, omitting the keyword will result in a global variable which will leak outside of the scope of the function or block
+
+```
+function fallInLove(){
+  let love = true;
+  if (love === true) {
+    happy = null; // declaring a naked happy variable
+    love = false;
+  } else {
+    love === true;
+  }
+  return love
+}
+
+console.log(happy); // null
+```
