@@ -733,3 +733,55 @@ function arrayIT (linkedList) {
 console.log(arrayIT(linkedList2));
 // code above needed
 ```
+### Scope & Closure
+
+#### Scope
+
+- Scope is the set of rules that determines where and how a variable (identifier) can be looked-up. This look-up may be for the purposes of assigning to the variable, which is an LHS (left-hand-side) reference, or it may be for the purposes of retrieving its value, which is an RHS (right-hand-side) reference. 
+
+In other words the scope is the field where the variable is discoverable. 
+
+`let:`
+- variables declared with let will be discoverable only inside the block in which they're declared OR in the blocks inside the block; Same goes for `const` with the difference being that the `const`-`s` cannot be reassigned. 
+
+**`let` and `const` have block-scope**
+
+```
+let love = true;
+if (love === true) {
+  let happy;
+  love === false;
+} else {
+  love === true;
+}
+
+console.log(love) // false
+console.log(happy) //ReferenceError: happy is not defined
+```
+##### **Lexical/Static scope:** 
+
+- Lexical scope is determined by the way the code is written. In other words, an item's lexical scope is the place in which the item got created. The place an item got invoked (or called) is not necessarily the item's lexical scope. Instead, an item's definition space is its lexical scope.
+
+***Looking for variables happens from the inside going outwards; The internal scopes can reach the variables in the external scope but not the other way around: If you're inside the house you can see the people outside but they cannot see you.*** 
+
+###### Hoisting - `lets` and `consts` are hoisted without actual definition and will throw an error if you tried to reach them "above" their declaration point
+
+`var`
+- variables declared with the `var` keyword don't have block-scope and they can be reached from everywhere in the file/module 
+
+```
+let love = true;
+if (love === true) {
+  var happy;
+  love === false;
+} else {
+  love === true;
+}
+
+console.log(happy); // undefined
+console.log(love) // false
+console.log(happy) //ReferenceError: happy is not defined
+```
+
+Now we can read the value of happy from the outside (even if we haven't actually assigned a value to it because we are not sure how we feel)
+
