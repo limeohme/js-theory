@@ -765,6 +765,7 @@ console.log(happy) //ReferenceError: happy is not defined
 ***Looking for variables happens from the inside going outwards; The internal scopes can reach the variables in the external scope but not the other way around: If you're inside the house you can see the people outside but they cannot see you.*** 
 ##### Hoisting
 > Yo, ho, haul together,
+
 > Hoist the colors high
 
 - JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
