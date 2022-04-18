@@ -764,6 +764,9 @@ console.log(happy) //ReferenceError: happy is not defined
 
 ***Looking for variables happens from the inside going outwards; The internal scopes can reach the variables in the external scope but not the other way around: If you're inside the house you can see the people outside but they cannot see you.*** 
 ##### Hoisting
+> Yo, ho, haul together,
+> Hoist the colors high
+
 - JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
 - In preparation for execution (which will be done line by line) the whole code is read and compiled, and in this process the declarations in the code seem to have happened at the top. Declarations themselves are hoisted, but assignments, even assignments of function expressions, are not hoisted. 
 
@@ -772,6 +775,7 @@ console.log(happy) //ReferenceError: happy is not defined
 Hoisting allows functions to be safely used in code before they are declared.
 ###### Hoisting `let` & `const`
 `lets` and `consts` are hoisted without actual definition and will throw an error if you tried to reach them "above" their declaration point
+`ReferenceError: Cannot access 'someVariable' before initialization`
 
 `var`
 - variables declared with the `var` keyword don't have block-scope and they can be reached from everywhere in the file/module 
@@ -795,7 +799,7 @@ Now we can read the value of happy from the outside (even if we haven't actually
 `vars` are hoisted with declaration but without the initializing value if one was given; read from above they equal `undefined`
 
 ```
-console.log(happy) //undefined
+console.log(happy) // undefined
 let love = true;
 if (love === true) {
   var happy === null;
@@ -854,4 +858,61 @@ function fallInLove(){
 }
 
 console.log(happy); // null
+```
+- let's also say that such a definition will not be hoisted 
+`ReferenceError: a is not defined` will be thrown if we try to access it from above
+##### Function Hoisting
+
+1. Function declarations
+ - function declarations will be hoisted in their entirety and can be called before their lexical declaration
+
+ ```
+console.log(fallInLove()); // false; yes, it's still false
+
+function fallInLove(){
+  let love = true;
+  if (love === true) {
+    happy = null;
+    love = false;
+  } else {
+    love === true;
+  }
+  return love
+}
+ ```
+
+ 2. Function expressions / Arrow functions
+- Function expressions will be hoisted according to the keyword used to declare them 
+
+- `var` declarations will throw the following error since fallInLove is actually `undefined`
+
+ ```
+ console.log(fallInLove()); // ReferenceError: fallInLove is not a function
+ var fallInLove = () => {
+  let love = true;
+  if (love === true) {
+    happy = null;
+    love = false;
+  } else {
+    love === true;
+  }
+  return love
+}
+
+ ```
+ - `let`/`const`
+ 
+ 
+```
+ console.log(fallInLove()); // ReferenceError: Cannot access 'fallInLove' before initialization
+ var fallInLove = () => {
+  let love = true;
+  if (love === true) {
+    happy = null;
+    love = false;
+  } else {
+    love === true;
+  }
+  return love
+}
 ```
