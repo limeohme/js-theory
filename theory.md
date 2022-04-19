@@ -923,4 +923,47 @@ Closure is when a function is able to remember and access its lexical scope even
 
 - As far as I'm concerned `closure` is the ability of functions to remember and to carry whatever they need for their execution even if it happens away from their birthplace. Even if it's burned to the ground.
 
+
+```
+function giveXMasGift(gift) {
+    return function(name) {
+         return `Santa brought ${gift} for ${name}`;
+    }
+ }
+ let secretSanta = giveXMasGift('socks');
+ let secretSanta1 = giveXMasGift('DS3');
+ 
+ console.log(secretSanta('Ed')); // Santa brought socks for Ed
+ console.log(secretSanta1('Eddie')); // Santa brought DS3 for Eddie
+```
+
+In this example the return of the giveXMasGift function is another function that gets a `name` as a parameter and returns a string. The return statement, though, doesn't use only the given name but also the parameter `gift` that is given to the outer function.
+
+To get to the inner function we need to call giveXMasGift so that it can create it, and we need to call it with the agrument the inner function will use later on. Then, to see what has Santa brought to our current person of interest, we need to call the returned function (`secretSanta` in this case) with the name as an argument. This will return a string, containing both the `gift` and the `name` even though `gift` is passed to the outer function which has been called and has gone to the great beyond some time ago. 
+
 ![Alt text](https://64.media.tumblr.com/e5bcac2ad89c8de6c815a3dd8990c01a/tumblr_ofhy8yIRVx1vfdr29o1_400.gifv "a title")
+
+We can also skip the assignment of the inner function to a variable and call it immediately: 
+```
+function giveXMasGift(gift) {
+    return function(name) {
+         return `Santa brought ${gift} for ${name}`;
+    }
+ }
+ let secretSanta = giveXMasGift('socks')('Ed');
+
+ 
+ console.log(secretSanta); // Santa brought socks for Ed
+```
+We can do this for as many functions as we can track with our limited attention span.
+
+###### Beware the loop and non-block-scoped variables
+
+```
+for (var index = 1; index <= 3; index++) {
+    setTimeout(function () {
+        console.log('after ' + index + ' second(s):' + index);
+    }, index * 1000);
+}
+```
+##### IIFEs (Immediately Invoked FUNction Expressions)
