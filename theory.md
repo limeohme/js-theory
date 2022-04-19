@@ -1085,9 +1085,11 @@ function ageLiya() {
 
 console.log(ageLiya()); // 24
 ```
-The function `ageLiya` has a side effect: It increments a variable that does not belong to it and it has the audacity to use a non-local variable in the first place.
+The function `ageLiya` has a side effect: It increments a variable that does not belong to it AND it has the audacity to use a non-local variable in the first place.
 
 Modifying an array or an object, writing to a file, and logging to the console are other examples of side effects.
+
+
 
 
 
