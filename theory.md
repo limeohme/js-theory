@@ -1041,14 +1041,53 @@ We could define more functions inside that do something for our current balance 
 ##### Declarative vs. Imperative Programming Paradigm
 
 | Declarative | Imperative |
-| ---------------| ----------- |
+| ----------- | ----------- |
 |Declarative programming is a programming paradigm <br> that expresses the logic of a computation<br> without describing its control flow.|Imperative programming is a programming paradigm <br> that uses statements that changes the program’s state.|
 |Declarative programming focuses on what <br> the program should accomplish.|Imperative programming focuses on how <br> the program should achieve the result.|
 |Declarative programming provides less flexibility.|Imperative programming provides more flexibility.|
 |Declarative programming simplifies the program.|Imperative programming can increase the complexity of the program.|
 |Functional, Logic, Query programming <br> falls into declarative programming.|Procedural and Object Oriented programming <br> falls into imperative programming.|
 
+#### FP
 
+> Functional programming is a paradigm of building computer programs using expressions and functions without mutating state and data. By respecting these restrictions, functional programming aims to write code that is clearer to understand and more bug resistant. This is achieved by avoiding using flow-control statements (for, while, break, continue, etc.) which make the code harder to follow. Also, functional programming requires us to write pure, deterministic functions which are less likely to be buggy.
+
+##### Pure Functions
+
+> Be thou as chaste as ice,
+> as pure as snow, 
+>thou shalt not escape calumny
+
+- Pure functions are functions that are realiable: They garantee that the output value for a given input will always be the same no matter how many times we pass it to them. To achieve this they should not use anything that may change without their knowledge.
+
+```
+const constant = 24;
+function getAlienYears(HumanYears) {
+  return humanYears * constant
+}
+```
+In this case the `constant` variable may change from the point of view of the function since it's separate from it. It can get changed or deleted and then `getAlienYears` will no longer work as expected.
+
+```
+function getAlienYears(HumanYears) {
+  return humanYears * 24
+}
+```
+Now `getAlienYears` is a pure function. No matter how many times we tell it to compute 2 human years to alien years the output will always be 48.
+
+- Pure functions don't have **side effects**
+
+```
+let liyaAge = 23;
+function ageLiya() {
+  return ++liyaAge
+}
+
+console.log(ageLiya()); // 24
+```
+The function `ageLiya` has a side effect: It increments a variable that does not belong to it and it has the audacity to use a non-local variable in the first place.
+
+Modifying an array or an object, writing to a file, and logging to the console are other examples of side effects.
 
 
 
