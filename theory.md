@@ -1032,6 +1032,6 @@ console.log('😘');
 ```
 
 - The value assigned to `bankAccount` is the return value of the `createBankAccount` function expression (originally it didn't have a name, but I found it useful to add one for the purposes of this explanation and nothing else); `createBankAccount` returns an object that has as properties the various function defined inside `createBankAccount` that can help us manage our bank account. Those functions are then methods of `bankAccount` and they're *public*. 
-We could define more functions inside that do something for our current balance but not return them because we don't want them to be used from the outside the function scope (the `balance` variable for example lives only to give us basis of the following functions). 
+We could define more functions inside that do something for our current balance but not return them because we don't want them to be used from the outside the function scope (the `balance` variable for example lives only to give us basis of the following functions and is *private*). 
 
 
