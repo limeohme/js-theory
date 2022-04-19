@@ -967,6 +967,17 @@ for (var index = 1; index <= 3; index++) {
 }
 ```
 ###### To be fair, beware the leaking variables in general...
-##### IIFEs (Immediately Invoked FUNction Expressions)
+###### IIFE-It
+```
+let secretSanta = (function giveXMasGift(gift) {
+    return function(name) {
+         return `Santa brought ${gift} for ${name}`;
+    }
+ })('socks')
+ 
+ console.log(secretSanta('Ed')); // Santa brought socks for Ed
+```
+
+This way we can't call giveXMasGift more than once. Everybody will be getting socks for Christmas when we call `secretSanta`.
 
 
