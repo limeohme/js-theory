@@ -1115,12 +1115,14 @@ function giveXMasGift(gift) {
 `.map`, `.filter`, and `.reduce` all accept a function as an argument:
 
 ```
-arr = [1, 2, 3];
+arr = [1, 2, 3]; // calling array
 arr
 .map(callback function)
 .filter(callback function)
 .reduce(callback, accumulator*)
 ```
+### `.map`
+- The map() method creates a new array filled with the results of calling a provided function on every element in the calling array. 
 ##### .map syntax:
 ```
 // Arrow function
@@ -1138,7 +1140,103 @@ map(function(element, index) { /* ... */ })
 map(function(element, index, array){ /* ... */ })
 map(function(element, index, array) { /* ... */ }, thisArg)
 ```
+```
+const arr = [1, 2, 3];
+const mapped = arr.map(x => x**2);
+console.log(mapped) // [1, 4, 9]
 
-##### `.filter` syntax:
+```
+### `.filter` 
 
-##### `.reduce` syntax:
+- The filter() method creates a new array with all elements that pass the test implemented by the provided function. The function called with the element is a predicate to be confirmed or denied - i.e, it will return `true` and the element will be put in the new array or `false` and the element will not appear in the returned array. 
+##### .filter syntax:
+
+```
+// Arrow function
+filter((element) => { /* ... */ } )
+filter((element, index) => { /* ... */ } )
+filter((element, index, array) => { /* ... */ } )
+
+// Callback function
+filter(callbackFn)
+filter(callbackFn, thisArg)
+
+// Inline callback function
+filter(function(element) { /* ... */ })
+filter(function(element, index) { /* ... */ })
+filter(function(element, index, array){ /* ... */ })
+filter(function(element, index, array) { /* ... */ }, thisArg)
+```
+
+```
+const arr = [1, 2, 3];
+const isEven = (x) => (x % 2 === 0)? true:false;
+const filtered = arr.filter(x => isEven(x));
+console.log(filtered) // [2]
+```
+
+### `.reduce` 
+
+- The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+- The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+
+##### .reduce syntax:
+
+```
+// Arrow function
+reduce((previousValue, currentValue) => { /* ... */ } )
+reduce((previousValue, currentValue, currentIndex) => { /* ... */ } )
+reduce((previousValue, currentValue, currentIndex, array) => { /* ... */ } )
+reduce((previousValue, currentValue, currentIndex, array) => { /* ... */ }, initialValue)
+
+// Callback function
+reduce(callbackFn)
+reduce(callbackFn, initialValue)
+
+// Inline callback function
+reduce(function(previousValue, currentValue) { /* ... */ })
+reduce(function(previousValue, currentValue, currentIndex) { /* ... */ })
+reduce(function(previousValue, currentValue, currentIndex, array) { /* ... */ })
+reduce(function(previousValue, currentValue, currentIndex, array) { /* ... */ }, initialValue)
+```
+ - the `previousValue` is the accumulator/accumulated value i.e. the value that will be returned in the end
+
+ ```
+let sum = [0, 1, 2, 3].reduce(function (previousValue, currentValue) {
+  return previousValue + currentValue
+}, 0)
+// sum is 6
+ ```
+ The return value of reduce is a single value, but it can be an array or an object.
+
+ The callback functions can be more complex...:
+
+ ```
+ function groupBy(data) {
+  const toGroup = data[data.dataProp];
+  
+  const result = (toGroup) => {
+    const grouped = toGroup.reduce((acc, el) => {
+      const GBP = data['groupByProp'];
+      const key = el[GBP];
+
+      if (!(key in acc)) {
+        acc[key] = [];
+        acc[key].push(el);
+      } else {
+        acc[key].push(el);
+      }
+      return acc;
+    }, {});
+    return grouped;
+  };
+  return result(toGroup);
+};
+
+```
+...And even much more complex than this.
+
+*This is a custom implementation of the groupBy method:
+###### The groupBy() method groups the elements of the calling array according to the string values returned by a provided testing function. The returned object has separate properties for each group, containing arrays with the elements in the group. This method should be used when group names can be represented by strings.
+
