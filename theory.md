@@ -1048,9 +1048,14 @@ We could define more functions inside that do something for our current balance 
 |Declarative programming simplifies the program.|Imperative programming can increase the complexity of the program.|
 |Functional, Logic, Query programming <br> falls into declarative programming.|Procedural and Object Oriented programming <br> falls into imperative programming.|
 
+
 #### FP
 
 -  Functional programming is a paradigm of building computer programs using expressions and functions without mutating state and data. By respecting these restrictions, functional programming aims to write code that is clearer to understand and more bug resistant. This is achieved by avoiding using flow-control statements (for, while, break, continue, etc.) which make the code harder to follow. Also, functional programming requires us to write pure, deterministic functions which are less likely to be buggy.
+
+- A large program is a costly program, and not just because of the time it takes to build. Size almost always involves complexity, and complexity confuses programmers. Confused programmers, in turn, introduce mistakes (bugs) into programs. A large program then provides a lot of space for these bugs to hide, making them hard to find.
+
+- Functional programming provides a higher level of abstraction: what's happening when we invoke a function is not shown in details but rather implied (for example by the function's name). Abstractions hide details and give us the ability to talk about problems at a higher (or more abstract) level. 
 
 ##### Pure Functions
 
@@ -1089,7 +1094,51 @@ The function `ageLiya` has a side effect: It increments a variable that does not
 
 Modifying an array or an object, writing to a file, and logging to the console are other examples of side effects.
 
+### Pure Array Methods
+#### The Holy Trinity: `.map`, `.filter`, and `.reduce`
 
+- The Holy Trinity are what we call ***higher order functions*** - functions that accept as parameters other functions and/or return functions as result. 
 
+In our example of closure we used a HOF:
 
+```
+function giveXMasGift(gift) {
+    return function(name) {
+         return `Santa brought ${gift} for ${name}`;
+    }
+ }
+ let secretSanta = giveXMasGift('socks')('Ed');
+ ```
 
+- `giveXMasGift` is a HOF since it returns another function.
+
+`.map`, `.filter`, and `.reduce` all accept a function as an argument:
+
+```
+arr = [1, 2, 3];
+arr
+.map(callback function)
+.filter(callback function)
+.reduce(callback, accumulator*)
+```
+##### .map syntax:
+```
+// Arrow function
+map((element) => { /* ... */ })
+map((element, index) => { /* ... */ })
+map((element, index, array) => { /* ... */ })
+
+// Callback function
+map(callbackFn)
+map(callbackFn, thisArg)
+
+// Inline callback function
+map(function(element) { /* ... */ })
+map(function(element, index) { /* ... */ })
+map(function(element, index, array){ /* ... */ })
+map(function(element, index, array) { /* ... */ }, thisArg)
+```
+
+##### `.filter` syntax:
+
+##### `.reduce` syntax:
