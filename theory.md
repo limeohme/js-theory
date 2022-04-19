@@ -1062,14 +1062,14 @@ We could define more functions inside that do something for our current balance 
 
 ```
 const constant = 24;
-function getAlienYears(HumanYears) {
+function getAlienYears(humanYears) {
   return humanYears * constant
 }
 ```
 In this case the `constant` variable may change from the point of view of the function since it's separate from it. It can get changed or deleted and then `getAlienYears` will no longer work as expected.
 
 ```
-function getAlienYears(HumanYears) {
+function getAlienYears(humanYears) {
   return humanYears * 24
 }
 ```
