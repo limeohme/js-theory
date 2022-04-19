@@ -980,4 +980,58 @@ let secretSanta = (function giveXMasGift(gift) {
 
 This way we can't call giveXMasGift more than once. Everybody will be getting socks for Christmas when we call `secretSanta`.
 
+![Alt text](https://c.tenor.com/aCMbLF-QvmIAAAAC/hohoho-holycrap.gif "when you think about closures for too long")
+
+#### Module Pattern 
+
+The Module Pattern is one of the important patterns in JavaScript. It is a commonly used Design Pattern which is used to wrap a set of variables and functions together in a single scope.
+- It is used to define objects and specify the variables and the functions that can be accessed from outside the scope of the function.
+
+- We expose certain properties and function as public and can also restrict the scope of properties and functions within the object itself, making them private: This means that those variables cannot be accessed outside the scope of the function.
+
+```
+const bankAccount = (function createBankAccount(){
+  let balance = 0;
+  
+  const deposit = function (depositAmount) {
+    if (typeof depositAmount === 'number' && !isNaN(depositAmount) && depositAmount >= 0) {
+      balance += depositAmount;
+      return balance;
+    } else throw "Not a valid deposit amount! Must be a number bigger than zero.";
+  };
+  const withdraw = function (withdrawAmount) {
+    if (withdrawAmount > balance) {
+      throw "Balance too low to withdraw from.";
+    } else {
+      if (typeof withdrawAmount === 'number' && !isNaN(withdrawAmount && withdrawAmount >= 0)) {
+        balance -= withdrawAmount;
+        return balance;
+      } else throw "Not a valid deposit amount! Must be a number bigger than zero.";
+    }
+  };
+//   const getBalance = function () {
+//     return `Current balance: ${balance} CRNCY`;
+//   }
+  
+  return {
+    deposit,
+    withdraw,
+    get CurrentAmount() {
+        return  `Current balance: ${balance} CRNCY`;
+    },
+    //set CurrentAmount() {.......}
+  };
+})();
+
+bankAccount.deposit(6000);
+bankAccount.withdraw(200);
+console.log(bankAccount.CurrentAmount); // Current balance: 5800 CRNCY
+
+
+console.log('😘'); 
+```
+
+- The value assigned to `bankAccount` is the return value of the `createBankAccount` function expression (originally it didn't have a name, but I found it useful to add one for the purposes of this explanation and nothing else); `createBankAccount` returns an object that has as properties the various function defined inside `createBankAccount` that can help us manage our bank account. Those functions are then methods of `bankAccount` and they're *public*. 
+We could define more functions inside that do something for our current balance but not return them because we don't want them to be used from the outside the function scope (the `balance` variable for example lives only to give us basis of the following functions). 
+
 
