@@ -1038,6 +1038,17 @@ We could define more functions inside that do something for our current balance 
 
 > the func the whole func and nothing but the func
 
+##### Declarative vs. Imperative Programming Paradigm
+
+| Declarative | Imperative |
+| ---------------| ----------- |
+|Declarative programming is a programming paradigm <br> that expresses the logic of a computation<br> without describing its control flow.|Imperative programming is a programming paradigm <br> that uses statements that changes the program’s state.|
+|Declarative programming focuses on what <br> the program should accomplish.|Imperative programming focuses on how <br> the program should achieve the result.|
+|Declarative programming provides less flexibility.|Imperative programming provides more flexibility.|
+|Declarative programming simplifies the program.|Imperative programming can increase the complexity of the program.|
+|Functional, Logic, Query programming <br> falls into declarative programming.|Procedural and Object Oriented programming <br> falls into imperative programming.|
+
+
 
 
 
