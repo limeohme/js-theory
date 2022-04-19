@@ -966,4 +966,7 @@ for (var index = 1; index <= 3; index++) {
     }, index * 1000);
 }
 ```
+###### To be fair, beware the leaking variables in general...
 ##### IIFEs (Immediately Invoked FUNction Expressions)
+
+
