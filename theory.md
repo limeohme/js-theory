@@ -1050,7 +1050,7 @@ We could define more functions inside that do something for our current balance 
 
 #### FP
 
-> Functional programming is a paradigm of building computer programs using expressions and functions without mutating state and data. By respecting these restrictions, functional programming aims to write code that is clearer to understand and more bug resistant. This is achieved by avoiding using flow-control statements (for, while, break, continue, etc.) which make the code harder to follow. Also, functional programming requires us to write pure, deterministic functions which are less likely to be buggy.
+-  Functional programming is a paradigm of building computer programs using expressions and functions without mutating state and data. By respecting these restrictions, functional programming aims to write code that is clearer to understand and more bug resistant. This is achieved by avoiding using flow-control statements (for, while, break, continue, etc.) which make the code harder to follow. Also, functional programming requires us to write pure, deterministic functions which are less likely to be buggy.
 
 ##### Pure Functions
 
