@@ -939,7 +939,7 @@ function giveXMasGift(gift) {
 
 In this example the return of the giveXMasGift function is another function that gets a `name` as a parameter and returns a string. The return statement, though, doesn't use only the given name but also the parameter `gift` that is given to the outer function.
 
-To get to the inner function we need to call giveXMasGift so that it can create it, and we need to call it with the agrument the inner function will use later on. Then, to see what has Santa brought to our current person of interest, we need to call the returned function (`secretSanta` in this case) with the name as an argument. This will return a string, containing both the `gift` and the `name` even though `gift` is passed to the outer function which has been called and has gone to the great beyond some time ago. 
+To get to the inner function we need to call giveXMasGift so that it can create it, and we need to call it with the argument the inner function will use later on. Then, to see what has Santa brought to our current person of interest, we need to call the returned function (`secretSanta` in this case) with the name as an argument. This will return a string, containing both the `gift` and the `name` even though `gift` is passed to the outer function which has been called and has gone to the great beyond some time ago. 
 
 ![Alt text](https://64.media.tumblr.com/e5bcac2ad89c8de6c815a3dd8990c01a/tumblr_ofhy8yIRVx1vfdr29o1_400.gifv "a title")
 
