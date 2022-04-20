@@ -356,7 +356,7 @@ With ES Modules, imports are static, which means they are executed at parse time
 
 **ECMAScript** is a JavaScript standard meant to ensure the interoperability of web pages across different web browsers. It is standardized by Ecma International according to the document ECMA-262. ECMAScript is commonly used for client-side scripting on the World Wide Web, and it is increasingly being used for writing server applications and services using Node.js. 
 
-#####Static Analysis Tools / Linters
+##### Static Analysis Tools / Linters
 
 - Static code analysis is the process of analyzing code before it is executed. It is the automated equivalent to another developer reading and reviewing your code, except with the added efficiency, speed, and consistency afforded by a computer that no human could match.
 - Static code analysis analyses its aspects such as readability, consistency, error handling, type checking, and alignment with best practices. Static analysis is not primarily concerned with whether your code provides the expected output but rather with how the code itself is written. It's an analysis of the quality of source code, not its functionality.
