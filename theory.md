@@ -1260,8 +1260,9 @@ For the decision to be meaningful, the processed data must qualify for the follo
 
 - **Completeness** − Information should be complete.
 
+
 ```js
-const age = 'green'    
+const age = 'green';    
 ```
 
 Unless we have specified what green means according to the age (e.g. 0-30 years equals green age), the example above is completely meaningless considering that age is measured in years or months and not in colours. If we do specify what `green` means and for example we want to label specific age groups in this manner, though, we will have meaningful information. Why we would do that is another question entirely...
@@ -1272,4 +1273,101 @@ Unless we have specified what green means according to the age (e.g. 0-30 years 
 ###### The term `big data` has been used to describe data in the petabyte range or larger. 
 
 Just sayin'.
+
+[Data (computing), Wikipedia](https://en.wikipedia.org/wiki/Data_(computing))
+
+##### Data Processing Cycle
+
+- Data processing is the re-structuring or re-ordering of data by people or machine to increase their usefulness and add values for a particular purpose. 
+
+![Alt text](https://image.slidesharecdn.com/vii-cs-1-130603024919-phpapp01/95/data-processing-cycle-24-638.jpg?cb=1370227825 "when you think about closures for too long")
+
+[Data Processing](https://www.simplilearn.com/what-is-data-processing-article#data_processing_cycle)
+
+<h2>VALIDATE YOUR DATA</h2>
+
+#### Objects as data-keepers
+
+Objects allow us to hold - to group or split - information in a meaningful way. They also allow us to pass it around keeping this meaning intact.
+
+An object consists of the following:
+
+ - Data members - Data members are the variables. They establish the state or attributes for the object.
+
+- Member functions - Member functions represent the code to manipulate the data. The behaviour of the object is determined by the member functions.
+
+Objects can have `state` and `behaviour`.
+
+**State** refers to the data that is stored in the object - properties and values.
+**Behaviour** refers to the predifined functions (methods) of the object.
+
+You can change the state of an object by directly accessing its properties (1) or by using its methods (2).
+1.
+```js
+const self = {
+    name: 'Liya',
+    birthday: {
+        day: 24,
+        month: '',
+        year: 1998
+    },
+    age: 23,
+    skills: null,
+    haircolour: 'dark brown',
+    eyecolour: 'green',
+    growUp: function (years) {this.age = years}
+}
+
+self.age = 24
+
+console.log(self.age);
+```
+
+2.
+```js
+const self = {
+  name: 'Liya',
+  birthday: {
+      day: 24,
+      month: '',
+      year: 1998
+  },
+  age: 23,
+  skills: null,
+  haircolour: 'dark brown',
+  eyecolour: 'green',
+  growUp: function (years) {this.age = years}
+}
+
+self.growUp(25)
+
+console.log(self.age); // 25
+
+```
+
+By using a method you can protect the state of your data from becoming invalid:
+
+```js
+const self = {
+    name: 'Liya',
+    birthday: {
+        day: 24,
+        month: '',
+        year: 1998
+    },
+    age: 23,
+    skills: null,
+    haircolour: 'dark brown',
+    eyecolour: 'green',
+    growUp: function (years) {
+        if (isNaN(years)) throw 'Age must be a valid number!';
+        else this.age = years;
+    }
+}
+
+self.growUp('blue pink'); // Age must be a valid number!
+```
+
+
+
 
