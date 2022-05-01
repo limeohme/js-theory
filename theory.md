@@ -1240,3 +1240,36 @@ let sum = [0, 1, 2, 3].reduce(function (previousValue, currentValue) {
 *This is a custom implementation of the groupBy method:
 ###### The groupBy() method groups the elements of the calling array according to the string values returned by a provided testing function. The returned object has separate properties for each group, containing arrays with the elements in the group. This method should be used when group names can be represented by strings.
 
+## II
+## Object-Oriented Programming (OOP)
+
+#### Data
+
+Data can be defined as a representation of facts, concepts, or instructions in a formalized manner, which should be suitable for communication, interpretation, or processing by human or electronic machine.
+
+Data is represented with the help of characters such as alphabets (A-Z, a-z), digits (0-9) or special characters (+,-,/,*,<,>,= etc.)
+
+##### What is Information?
+Information is organized or classified data, which has some meaningful values for the receiver. Information is the processed data on which decisions and actions are based.
+
+For the decision to be meaningful, the processed data must qualify for the following characteristics −
+
+ - **Timely** − Information should be available when required.
+
+- **Accuracy** − Information should be accurate.
+
+- **Completeness** − Information should be complete.
+
+```js
+const age = 'green'    
+```
+
+Unless we have specified what green means according to the age (e.g. 0-30 years equals green age), the example above is completely meaningless considering that age is measured in years or months and not in colours. If we do specify what `green` means and for example we want to label specific age groups in this manner, though, we will have meaningful information. Why we would do that is another question entirely...
+
+***In computing***, data is information that has been translated into a form that is efficient for movement or processing. Relative to today's computers and transmission media, data is information converted into binary digital form. It is acceptable for data to be used as a singular subject or a plural subject. Raw data is a term used to describe data in its most basic digital format.
+
+
+###### The term `big data` has been used to describe data in the petabyte range or larger. 
+
+Just sayin'.
+
