@@ -1379,7 +1379,154 @@ self.growUp('blue pink'); // Age must be a valid number!
 
 Its bond can be determined according to 4 rules:
 
+##### 1. Default Binding
+
+```js
+const speak = function () {
+  console.log(`Hi, my name is ${this.name}`)
+}
+
+speak() // Hi, my name is undefined
+```
+
+If we call a function, using `this`, on its own, it will bind itself to the global scope that doesn't have a name so the result will be `undefined`.
+
+If the global scope gets a name, then `this` will get that name.
+
+```js
+name = 'Global'
+const speak = function () {
+  console.log(`Hi, my name is ${this.name}`)
+}
+
+speak() // Hi, my name is Global
+```
+
+##### 2. Implicit binding
+
+``` js
+const speak = function () {
+  console.log(`Hi, my name is ${this.name}`)
+}
+
+const context = {
+  name: 'Implicit',
+  presentYourself: speak 
+}
+
+context.presentYourself() // Hi, my name is Implicit
+```
+In this case the method `presentYourself` refers to the `speak` function and thus the `speak` function is called inside the `context` object and `this` binds itself to it and searches for `context.name` which is *Implicit*.
+
+##### 3.1 Explicit Binding 
+
+Until now we haven't actually told our `speak` function to bind itself to anything. We just called it indirectly inside an object that makes sense to it and it happened um, *naturally*.
 
 
+``` js
+const speak = function () {
+  console.log(`Hi, my name is ${this.name}`)
+}
+
+const context = {
+  name: 'Explicit'
+}
+
+speak.call(context) // Hi, my name is Explicit
+```
+Here the `context` object no longer has a method that refers to the function. We explicitly tell `speak` to be called in the context of, well, `context`. 
+
+##### 3.2 Explicit Hard Binding
+
+``` js
+const speak = function () {
+  console.log(`Hi, my name is ${this.name}`)
+}
+
+const context = {
+  name: 'Hard Explicit'
+}
+
+const SpeakInContext = speak.bind(context) 
+SpeakIncontext() // Hi, my name is Hard Explicit
+```
+
+`.bind()` returns a new, bound function. `SpeakInContext` will execute the functionality of `speak` always in the context of `context`.
+
+*P.S.* In all these, though, `speak`, on its own, will give the result `Hi, my name is undefined`: the `this` inside of it refers to the global scope. We are not actually changing that. Just the context.
+
+*P.P.S.* In strict mode `this` is `undefined` and will not refer to the global object. 
+
+##### 4. `new` Binding
+
+- A `new` keyword is used to create an object from the constructor function.
+
+- Bound functions are automatically suitable for use with the new operator to construct new instances created by the target function. When a bound function is used to construct a value, the provided this is ignored.
+
+```js
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.toString = function() {
+  return `${this.x},${this.y}`;
+};
+
+const p = new Point(1, 2);
+p.toString();
+// '1,2'
+
+//  not supported in the polyfill below,
+
+//  works fine with native bind:
+
+const YAxisPoint = Point.bind(null, 0/*x*/);
+
+const emptyObj = {};
+const YAxisPoint = Point.bind(emptyObj, 0/*x*/);
+
+const axisPoint = new YAxisPoint(5);
+axisPoint.toString();                    // '0,5'
+
+axisPoint instanceof Point;              // true
+axisPoint instanceof YAxisPoint;         // true
+new YAxisPoint(17, 42) instanceof Point; // true
+```
 
 
+```js
+const Cartoon = function(name, character) {
+    this.name = name;
+    this.character = character;
+    this.log = function() {
+        console.log(this.name +  ' is a ' + this.character);
+    }
+};
+
+const tom = new Cartoon('Tom', 'Cat');
+//let jerry = new Cartoon('Jerry', 'Mouse');
+
+tom.log() // Tom is a Cat
+```
+- When a function is invoked with the `new` keyword, JavaScript creates an internal this object (like this, `this = {}`) within the function. The newly created `this` binds to the object being created using the `new` keyword.
+- Here the function Cartoon is invoked with the `new` keyword. So the internally created `this` will be bound to the new object being created here, which is `tom`.
+###### This constructor function may be converted to a class declaration.ts (80002) 😁
+```js
+class Cartoon {
+    constructor(name, character) {
+        this.name = name;
+        this.character = character;
+        this.log = function () {
+            console.log(this.name + ' is a ' + this.character);
+        };
+    }
+}
+
+const tom = new Cartoon('Tom', 'Cat');
+//let jerry = new Cartoon('Jerry', 'Mouse');
+
+tom.log() // Tom is a Cat
+console.log(tom instanceof Cartoon); // true
+```
+`console.log(tom instanceof Cartoon);` is also true when the constructor function and not the class declaration is used to create the instance.
