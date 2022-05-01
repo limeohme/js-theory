@@ -1368,6 +1368,18 @@ const self = {
 self.growUp('blue pink'); // Age must be a valid number!
 ```
 
+#### Context Binding
+
+![Alt text](https://c.tenor.com/O0ra4ogBjYEAAAAC/lord-of-the-rings-gandalf.gif)
+
+- `this` is used in functions
+- `this` does not refer to the function itself
+
+- `this` is a placeholder which binds itself to *something* when the function is invoked and its reference depends on where the function is being called 
+
+Its bond can be determined according to 4 rules:
+
+
 
 
 
