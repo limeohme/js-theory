@@ -1298,7 +1298,7 @@ An object consists of the following:
 
 Objects can have `state` and `behaviour`.
 
-**State** refers to the data that is stored in the object - properties and values.
+**State** refers to the data that is stored in the object - organized in *fields* - properties and values.
 **Behaviour** refers to the predifined functions (methods) of the object.
 
 You can change the state of an object by directly accessing its properties (1) or by using its methods (2).
@@ -1530,3 +1530,60 @@ tom.log() // Tom is a Cat
 console.log(tom instanceof Cartoon); // true
 ```
 `console.log(tom instanceof Cartoon);` is also true when the constructor function and not the class declaration is used to create the instance.
+
+#### OOP Fundamentals
+
+- Object-oriented programming (OOP) is a computer programming model that organizes software design around data, or objects, rather than functions and logic.
+
+- OOP focuses on the objects that developers want to manipulate rather than the logic required to manipulate them. 
+
+##### Classes 
+
+
+
+##### The 4 Principles of OOP
+
+![](https://cdn.climatechangenews.com/files/2014/01/800px-Apocalypse_vasnetsov.jpg)
+
+1. **Encapsulation**:
+- This principle states that all important information is contained inside an object and only select information is exposed. The implementation and state of each object are privately held inside a defined class. Other objects do not have access to this class or the authority to make changes. They are only able to call a list of public functions or methods. This characteristic of data hiding provides greater program security and avoids unintended data corruption.
+
+2. **Abstraction**:
+- Objects only reveal internal mechanisms that are relevant for the use of other objects, hiding any unnecessary implementation code. Objects in an OOP language provide an abstraction that hides the internal implementation details. Similar to the coffee machine in your kitchen, you just need to know which methods of the object are available to call and which input parameters are needed to trigger a specific operation. But you don’t need to understand how this method is implemented and which kinds of actions it has to perform to create the expected result. 
+
+3. **Inheritance**:
+- Classes can reuse code from other classes. Relationships and subclasses between objects can be assigned, enabling developers to reuse common logic while still maintaining a unique hierarchy. This property of OOP forces a more thorough data analysis, reduces development time and ensures a higher level of accuracy.
+
+4. **Polymorphism**:
+- is the ability to create a variable, a function or an object that has more than one form. 
+
+[PM](https://blog.sessionstack.com/how-javascript-works-3-types-of-polymorphism-f10ff4992be1)
+
+
+
+**method overriding** - a child class' method with the same name as a parent class' method will override it [the parent method].
+
+#### Classes & Instances
+
+[OOP Classes & Instances, examples in Python](https://brilliant.org/wiki/classes-oop/#:~:text=The%20class%20is%20a%20blueprint,a%20mechanism%20of%20reusing%20code.)
+
+In object-oriented programming, a class is a blueprint for creating objects (a particular data structure), providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods). The user-defined objects are created using the class keyword. An instance is a specific object created from a particular class.
+
+```js
+class Adams {
+    constructor(name) {
+        this.name = `${name} Adams`
+    }
+
+    speak() {
+        return `My name is ${this.name}`
+    }
+}
+
+let child = new Adams('Wednesday')
+
+console.log(child.speak()); // My name is Wednesday Adams
+```
+
+- After declaring the class name, a programmer must define a constructor method. While a class is a blueprint for a new data type, the programmer still needs to create values of this data type in order to have something that can store in variables or pass to functions. When called, the constructor creates the new object, runs the code in the constructor, and returns the new object.
+
