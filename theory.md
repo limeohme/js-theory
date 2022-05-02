@@ -1546,7 +1546,9 @@ console.log(tom instanceof Cartoon); // true
 ![](https://cdn.climatechangenews.com/files/2014/01/800px-Apocalypse_vasnetsov.jpg)
 
 1. **Encapsulation**:
-- This principle states that all important information is contained inside an object and only select information is exposed. The implementation and state of each object are privately held inside a defined class. Other objects do not have access to this class or the authority to make changes. They are only able to call a list of public functions or methods. This characteristic of data hiding provides greater program security and avoids unintended data corruption.
+- This principle states that the state and the methods of the object are enclosed together (in a logically sound way).
+
+**Information hiding** - important information is contained inside an object and only select information is exposed. The implementation and state of each object are privately held inside a defined class. Other objects do not have access to this class or the authority to make changes. They are only able to call a list of public functions or methods. This characteristic of data hiding provides greater program security and avoids unintended data corruption.
 
 2. **Abstraction**:
 - Objects only reveal internal mechanisms that are relevant for the use of other objects, hiding any unnecessary implementation code. Objects in an OOP language provide an abstraction that hides the internal implementation details. Similar to the coffee machine in your kitchen, you just need to know which methods of the object are available to call and which input parameters are needed to trigger a specific operation. But you don’t need to understand how this method is implemented and which kinds of actions it has to perform to create the expected result. 
@@ -1586,4 +1588,62 @@ console.log(child.speak()); // My name is Wednesday Adams
 ```
 
 - After declaring the class name, a programmer must define a constructor method. While a class is a blueprint for a new data type, the programmer still needs to create values of this data type in order to have something that can store in variables or pass to functions. When called, the constructor creates the new object, runs the code in the constructor, and returns the new object.
+
+##### Static Members 
+
+- static members are fields or methods that are called for the class itself and not for each of the instances separately 
+
+```js
+class BibliographyOfWilde {
+    static author = 'Oscar Wilde'
+  
+    constructor(name, pubYear, genre) {
+      this.name = name;
+      this.pubYear = pubYear;
+      this.genre = genre;
+    }
+  
+    giveBookInfo() {
+      return `Book name: ${this.name}, written by ${BibliographyOfWilde.author}, published in ${this.pubYear}, genre: ${this.genre}`
+    }
+}
+
+let DorianGray = new BibliographyOW('The Picture of Dorian Gray', 1890, 'Gothic fiction')
+
+console.log(DorianGray.giveBookInfo());
+```
+The author will not vary for the instances since all the oeuvres will be authored by Oscar Wilde so we can give the class this static property. You cannot access it through `this`.
+
+##### Private Fields
+
+```js
+class Author {
+    #authorName;
+    birthplace;
+}
+
+let ACDoyle = new Author();
+
+ACDoyle.birthplace = 'UK'
+console.log(ACDoyle.birthplace); // UK
+ACDoyle.#authorName // Property '#authorName' is not accessible outside class 'Author' because it has a private identifier.ts(18013)
+```
+- private fields can be accessed from within the class instance but not from the outside, but there are ways to work with it...
+
+```js
+class Author {
+    #authorName;
+    birthplace;
+    constructor(name) {
+        this.#authorName = name
+    }
+
+    name() {return this.#authorName}
+}
+
+let Doyle = new Author('Sir Arthur Conan Doyle');
+
+Doyle.birthplace = 'UK'
+console.log(Doyle.birthplace, Doyle.name());
+```
 
