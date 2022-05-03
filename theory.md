@@ -1644,6 +1644,29 @@ class Author {
 let Doyle = new Author('Sir Arthur Conan Doyle');
 
 Doyle.birthplace = 'UK'
-console.log(Doyle.birthplace, Doyle.name());
+console.log(Doyle.birthplace, Doyle.name()); // UK Sir Arthur Conan Doyle
 ```
 
+##### Properties 
+
+- Properties are written like methods but used as fields. They are often used to manage the values of private fields. 
+- Properties have two parts: A `get` part, used to access the value of the property (has no parameters and returns a value), and a `set` part which is used to write a value to the property (the `set` has one parameter and no return value).
+
+```js
+class Author {
+    #authorName;
+    birthplace;
+    
+    get authorName() {return this.#authorName}
+    set authorName(name) {this.#authorName = name}
+
+}
+
+let Doyle = new Author();
+
+Doyle.birthplace = 'UK'
+Doyle.authorName = 'Sir Arthur Conan Doyle'
+console.log(Doyle.birthplace, Doyle.authorName); // UK Sir Arthur Conan Doyle
+```
+
+Using only a getter will result in a read-only property and using only a setter will result in a write-only property (which is strange and unusual).
