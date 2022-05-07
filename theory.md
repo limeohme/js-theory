@@ -1749,3 +1749,169 @@ console.log(HS.penName, HS.bibliography); // Христо Смирненски �
 
 We can add as many new methods and fields as we want/need. We can change the existing members and access the superclass' members (as long as they're public) with the `super` keyword.
 
+##### Uses of Inheritance
+- Since a child class can inherit all the functionalities of the parent's class, this allows code reusability.
+- Once a functionality is developed, you can simply inherit it. No need to reinvent the wheel. This allows for cleaner code and easier to maintain.
+- Since you can also add your own functionalities in the child class, you can inherit only the useful functionalities and define other required features.
+
+#### Composition
+
+- Composition describes a class that references one or more objects of other classes in instance variables. This allows you to model a has-a association between objects.
+
+[Object composition in JS](https://medium.com/code-monkey/object-composition-in-javascript-2f9b9077b5e6)
+
+Creating an instance of `Bibliography` inside the constructor:
+```js
+class Bibliography {
+    #prose;
+    #poetry;
+  
+    constructor(proseOeuvres, poetryOeuvres) {
+      this.#prose = proseOeuvres.split(', ');
+      this.#poetry = poetryOeuvres.split(', ')
+    }
+
+    get prose() {return this.#prose.join(', ');}
+    get poetry() {return this.#poetry.join(', ');}
+}
+
+class Author {
+    #name;
+    #bibliography;
+
+    constructor(name, prose, poetry) {
+        this.#name = name;
+        this.#bibliography = new Bibliography(prose, poetry);
+    }
+
+    get name() {return this.#name;}
+    get bibliography() {
+        return `
+        Prose: ${this.#bibliography.prose},
+        Poetry: ${this.#bibliography.poetry}
+        `;
+    }
+}
+
+let OW = new Author('Oscar Wilde', 'The Picture of Dorian Gray', 'Requiescat, The Garden of Eros');
+
+console.log(`${OW.name}: ${OW.bibliography}`); 
+/* 
+Oscar Wilde: 
+        Prose: The Picture of Dorian Gray,
+        Poetry: Requiescat, The Garden of Eros
+*/
+```
+
+Passing any instance of `Bibliography` as a parameter to the constructor:
+```js
+class Bibliography {
+    #prose;
+    #poetry;
+  
+    constructor(proseOeuvres, poetryOeuvres) {
+      this.#prose = proseOeuvres.split(', ');
+      this.#poetry = poetryOeuvres.split(', ')
+    }
+
+    get prose() {return this.#prose.join(', ');}
+    get poetry() {return this.#poetry.join(', ');}
+}
+
+class Author {
+    #name;
+    #bibliography;
+
+    constructor(name, instanceOfBibliography) {
+        this.#name = name;
+        this.#bibliography = instanceOfBibliography;
+    }
+
+    get name() {return this.#name;}
+    get bibliography() {
+        return `
+        Prose: ${this.#bibliography.prose},
+        Poetry: ${this.#bibliography.poetry}
+        `;
+    }
+}
+
+let OW = new Author('Oscar Wilde', new Bibliography('The Picture of Dorian Gray', 'Requiescat, The Garden of Eros'));
+
+console.log(`${OW.name}: ${OW.bibliography}`);
+```
+
+#### Cohesion & Coupling
+
+##### Cohesion:
+- In computer programming, cohesion refers to the degree to which the elements inside a module belong together. In one sense, it is a measure of the strength of relationship between the methods and data of a class and some unifying purpose or concept served by that class. In another sense, it is a measure of the strength of relationship between the class's method and data themselves.
+
+-  Cohesion represents the clarity of the responsibilities of a module.
+
+![](https://ducmanhphan.github.io/img/design-pattern/core-oop/cohension-coupling/high-low-cohesion.png)
+
+- If our module performs one task and nothing else or has a clear purpose, our module has high cohesion. On the other hand, if our module tries to encapsulate more than one purpose or has an unclear purpose, our module has low cohesion.
+
+- Modules with high cohesion tend to be preferable, simple because high cohesion is associated with several desirable traits of software including robustness, reliability, and understandability.
+
+- Low cohesion is associated with undesirable traits such as being difficult to maintain, test, reuse, or even understand.
+
+- Cohesion is often contrasted with coupling. High cohesion often correlates with loose coupling, and vice versa.
+
+- Single Responsibility Principle aims at creating highly cohesive classes.
+
+Cohesion is increased if:
+
+The functionalities embedded in a class, accessed through its methods, have much in common.
+Methods carry out a small number of related activities, by avoiding coarsely grained or unrelated sets of data.
+
+##### Coupling 
+
+- Coupling is the degree of interdependence between software modules; a measure of how closely connected two routines or modules are; the strength of the relationships between modules. *How indipendent or interdipendent two classes/modules are.*
+
+[Cohesion & Coupling](https://ducmanhphan.github.io/2019-03-23-Coupling-and-Cohension-in-OOP/)
+
+- Coupling increases between two classes A and B if:
+
+- A has an attribute that refers to (is of type) B.
+- A calls on services of an object B.
+- A has a method that reference B (via return type or parameter).
+- A is a subclass of (or implements) class B.
+
+###### In the composition examples, when the instance of the `Bibliography` class is created inside the constructor of the `Author` class, the `Author` class creation strongly depends on the implementation of `Bibliography` since the number of parameters given to it rely on the number of paramenters that the bibliography will need to be created.
+
+<table>
+  <thead>
+    <tr>
+      <th>Cohesion</th>
+      <th>Coupling</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cohesion is the indication of the relationship within module</td>
+      <td>Coupling is the indication of the relationships between modules</td>
+    </tr>
+    <tr>
+      <td>Cohesion shows the module’s relative functional strength</td>
+      <td>Coupling shows the relative independence among the modules</td>
+    </tr>
+    <tr>
+      <td>Cohesion is a degree (quality) to which a component / module focuses on the single thing</td>
+      <td>Coupling is a degree to which a component / module is connected to the other modules</td>
+    </tr>
+    <tr>
+      <td>While designing we should strive for high cohesion. Ex: cohesive component/module focus on a single task with little interaction with other modules of the system</td>
+      <td>While designing we should strive for low coupling. Ex: dependency between modules should be less</td>
+    </tr>
+    <tr>
+      <td>Cohesion is the kind of natural extension of data hiding, for example, class having all members visible with a package having default visibility</td>
+      <td>Making private fields, private methods and non public classes provides loose coupling</td>
+    </tr>
+    <tr>
+      <td>Cohesion is Intra – Module Concept</td>
+      <td>Coupling is Inter - Module Concept</td>
+    </tr>
+  </tbody>
+</table>
+
