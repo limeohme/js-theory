@@ -1915,3 +1915,13 @@ Methods carry out a small number of related activities, by avoiding coarsely gra
   </tbody>
 </table>
 
+#### DRY KISS YAGNI
+
+- **Don't repeat yourself**: If you can separate and reuse a functionality that you use over and over again instead of writing it anew each time, maybe do that.
+- **Keep it simple, stupid**: Unneccesary complexity must be avoided. Strive for simplicity in code design. Also, like, in general. (**WET** - Write everything twice.)
+- **You aren't gonna need it**: Don't overthink future possibilities and protect your code from things that are unlikely to happen. You can't make futureproof code anyway.
+
+![](https://miro.medium.com/max/1400/1*YCLo-nmjV6QRt5Vv3ecCTw.png)
+
+#### [SOLID](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+
