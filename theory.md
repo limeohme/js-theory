@@ -1448,7 +1448,7 @@ const context = {
 }
 
 const SpeakInContext = speak.bind(context) 
-SpeakIncontext() // Hi, my name is Hard Explicit
+SpeakInContext() // Hi, my name is Hard Explicit
 ```
 
 `.bind()` returns a new, bound function. `SpeakInContext` will execute the functionality of `speak` always in the context of `context`.
@@ -1670,3 +1670,82 @@ console.log(Doyle.birthplace, Doyle.authorName); // UK Sir Arthur Conan Doyle
 ```
 
 Using only a getter will result in a read-only property and using only a setter will result in a write-only property (which is strange and unusual).
+
+#### Inheritance 
+
+- Through inheritance classes can inherit the characteristics of a *base/super* (parent) class using `extends`. 
+
+```js
+class Author {
+    #authorName;
+    #bibliography;
+    constructor(name, ...works) {
+        this.#authorName = name;
+        this.#bibliography = works;
+      
+    }
+    get bibliography() {return [...this.#bibliography].join(',')}
+    set bibliography(b) {
+      if (b instanceof Array) this.#bibliography = b;
+    }
+    get authorName() {return this.#authorName}
+    set authorName(name) {this.#authorName = name}
+
+}
+
+let MT = new Author('Mark Twain', 'The Adventures of Tom Sawyer', 'The Prince and the Pauper')
+
+console.log(MT.bibliography); // The Adventures of Tom Sawyer,The Prince and the Pauper
+
+class Poet extends Author {
+// all the functionality from Author is implicitly here
+}
+
+let IV = new Poet('Иван Вазов', 'Люлека ми замириса', 'Опълченците на Шипка');
+
+console.log(IV.authorName); // Иван Вазов
+```
+
+- the *derived* (child) classes should be used to build upon the inherited functionality by adding new fields, methods or properties or modifying existing members
+
+- using inheritance makes sense if the child class is truly a sub-class of the parent class 
+
+##### Member overriding 
+
+Overriding the constructor:
+```js
+class Author {
+    #penName;
+
+    constructor(penname) {
+        this.#penName = penname;      
+    }
+    
+    get penName() {return this.#penName}
+    set penName(name) {this.#penName = name}
+
+}
+
+let MT = new Author('Mark Twain')
+
+console.log(MT.penName); // Mark Twain
+
+class Poet extends Author {
+#bibliography;
+
+constructor(penname, ...works) {
+    super(penname);
+    this.#bibliography = works;
+}
+
+
+get bibliography() {return this.#bibliography.join(', ');}
+}
+
+let HS = new Poet('Христо Смирненски', 'Братчетата на Гаврош', 'Цветарка');
+
+console.log(HS.penName, HS.bibliography); // Христо Смирненски Братчетата на Гаврош, Цветарка
+```
+
+We can add as many new methods and fields as we want/need. We can change the existing members and access the superclass' members (as long as they're public) with the `super` keyword.
+
