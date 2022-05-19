@@ -1,6 +1,5 @@
  # <h1 align="center"> JavaScript ❤️ Basic Theory (as read by Liya) </h1>
 
-## I
 ## JS Core Theoretical Prep
 ### Loops:
 #### Definition: 
