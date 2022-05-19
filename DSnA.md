@@ -39,9 +39,24 @@ A problem is regarded as inherently difficult if its solution requires significa
 
 - Asymptotic Notation is used to describe the running time of an algorithm - how much time an algorithm takes with a given input, n. There are three different notations: **big O, big Theta (Θ), and big Omega (Ω)**. big-Θ is used when the running time is the same for all cases, big-O for the worst case running time, and big-Ω for the best case running time.
 
+![](https://res.cloudinary.com/practicaldev/image/fetch/s--qKYRIPrd--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/9hizrsfgzjn7lt7djo82.png)
+
 ![](https://o.quizlet.com/PPLANaPuXai5RUUb1zUFYw_b.png)
 
 
 #### Linear Data Structures
 
 - A **linear data structure** has data elements connected to each other so that elements are arranged in a sequential manner and each element is connected to the element in front of it and behind it. This way, the structure can be traversed in a single run.
+
+Array lists (+ dynamic), linked lists, stacks, queues.
+
+##### Array lists
+
+- elements are contiguously stored in memory
+
+- `.add()`: O(1)
+- `.get(index)`: O(1)
+- `.insert(index, item)`: must shift `n` elements, O(n)
+- `remove(index)`: ditto, O(n)
+
+
