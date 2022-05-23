@@ -72,7 +72,7 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 - `.removeAfter(node)`: O(1)
 - `find(value)`: O(n), must traverse
 
-#### Stack
+##### Stack
 
 - A stack is a linear data structure that stores data elements in a Last-In/First-Out (LIFO) or First-In/Last-Out (FILO) order. Here, a new element is added at one end and an element is removed from that end only. Resizable array/ LL.
 
@@ -82,7 +82,7 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 - `.pop()`: O(1)
 - `.peek()`: O(1)
 
-#### Queue
+##### Queue
 
 - A queue is a linear data structure that stores data elements in First-In/First Out(FIFO) manner, i.e., the element that’s inserted first will be removed first. RArr/LL/DoubleStack
 
