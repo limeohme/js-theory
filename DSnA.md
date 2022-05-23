@@ -54,9 +54,38 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 
 - elements are contiguously stored in memory
 
-- `.add()`: O(1)
+- `.add(item)`: O(1)
 - `.get(index)`: O(1)
 - `.insert(index, item)`: must shift `n` elements, O(n)
-- `remove(index)`: ditto, O(n)
+- `.remove(index)`: ditto, O(n)
+
+- A fixed array is an array for which the size or length is determined when the array is created and/or allocated.[1]
+
+- A dynamic array is a random access, variable-size list data structure that allows elements to be added or removed. It is supplied with standard libraries in many modern programming languages. 
+##### Linked lists
+- A linked list is a linear data structure in which elements are linked using pointers. It consists of nodes where each node contains a data field and a reference(link) to the next node in the list. NC.
 
 
+- `.addFirst(value)`: O(1)
+- `removeFirst()`: O(1)
+- `.insertAfter(node, item)`: O(1)
+- `.removeAfter(node)`: O(1)
+- `find(value)`: O(n), must traverse
+
+#### Stack
+
+- A stack is a linear data structure that stores data elements in a Last-In/First-Out (LIFO) or First-In/Last-Out (FILO) order. Here, a new element is added at one end and an element is removed from that end only. Resizable array/ LL.
+
+`top`
+
+- `.push(value)`: O(1)
+- `.pop()`: O(1)
+- `.peek()`: O(1)
+
+#### Queue
+
+- A queue is a linear data structure that stores data elements in First-In/First Out(FIFO) manner, i.e., the element that’s inserted first will be removed first. RArr/LL/DoubleStack
+
+- `.enqueue(value)`: O(1); at `tail`
+- `.dequeue()`: O(1); from `head`
+- `.peek()`: O(1) at `head`
