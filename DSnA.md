@@ -109,5 +109,6 @@ Collision resolution techniques can be broken into two classes: open hashing (al
 
 The simplest form of **open hashing** defines each slot in the hash table to be the head of a linked list. All records that hash to a particular slot are placed on that slot’s linked list. The following figure illustrates a hash table where each slot points to a linked list to hold the records associated with that slot. The hash function used is the simple mod function.
 
+![](https://gitlab.com/limeohme/theoretical-preparation/-/raw/main/images/open-hashing.png)
 
 
