@@ -421,7 +421,8 @@ function func(n) {
     if (n === 0) {
         return;
     } else {
-        func(n-1);
+        func(n-1); 
+        // the logger must be evaluated after the recursive call
         console.log(n);
     }
 }
