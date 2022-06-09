@@ -72,6 +72,143 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 - `.removeAfter(node)`: O(1)
 - `find(value)`: O(n), must traverse
 
+```js
+class DoublyLinkedList {
+    #head = null;
+    #tail = null;
+    #count = 0;
+
+    addFirst(value) {
+        const newNode = new LinkedListNode(value);
+        if (!this.#head) {
+            this.#tail = newNode;
+        } else {
+            this.#head.prev = newNode;
+            newNode.next = this.#head;
+            
+        }
+        this.#head = newNode;
+        this.#count++;
+    }
+
+    removeFirst() {
+        if (!this.#head) throw new Error('List is empty!');
+
+        const val = this.#head.value;
+        this.#head = this.#head.next;
+        if (this.#head) this.#head.prev = null;
+        
+        this.#count--;
+        
+        return val;     
+
+    }
+
+    addLast(value) {
+        const newNode = new LinkedListNode(value);
+
+        if (!this.#tail) {
+            this.#head = newNode;
+        } else {
+            this.#tail.next = newNode;
+            newNode.prev = this.#tail;
+            
+        }
+        this.#tail = newNode;
+        this.#count++;
+    }
+
+    removeLast() {
+        if (!this.#tail) throw new Error('List is empty!');
+            
+        const val = this.#tail.value;
+        this.#tail = this.#tail.prev;
+        if (this.#tail) this.#tail.next = null;
+        
+        this.#count--;
+        
+        return val;    
+
+    }
+
+    insertBefore(node, value) {
+        if (!node) throw new Error('Invalid node!');
+        
+        const newNode = new LinkedListNode(value);
+        
+        if (node === this.head) {
+            newNode.next = this.#head;
+            this.#head.prev = newNode;
+            this.#head = newNode;
+        } else {
+            newNode.prev = node.prev;
+            newNode.next = node;
+            node.prev = newNode;
+            if (newNode.prev) newNode.prev.next = newNode;
+        }
+        
+        this.#count++;
+    }
+    
+    insertAfter(node, value) {
+        if (!node) throw new Error('Invalid node!');
+        
+        const newNode = new LinkedListNode(value);
+        
+        if (this.#tail === node) {
+            newNode.prev = this.tail.prev;
+            this.#tail.next = newNode;
+            this.#tail = newNode;
+        } else {
+            newNode.next = node.next;
+            newNode.prev = node;
+            node.next = newNode;
+            if (newNode.next) newNode.next.prev = newNode;
+        }
+        
+        this.#count++;
+    }
+
+    find(value) {
+
+        let n = this.#head;
+
+        while(n) {
+            if(value === n.value) {
+                return n;
+            }
+            n = n.next;
+        }
+        return null;
+    }
+
+    values() {
+        const vals = [];
+        
+        let n = this.#head;
+    
+        while(n) {
+            vals.push(n.value);
+            n = n.next;
+        }
+        
+        return vals;
+    }
+
+    get count() {
+        return this.#count;
+    }
+    get head() {
+        return this.#head;
+    }
+
+    get tail() {
+        return this.#tail;
+    }
+
+}
+```
+
 ##### Stack
 
 - A stack is a linear data structure that stores data elements in a Last-In/First-Out (LIFO) or First-In/Last-Out (FILO) order. Here, a new element is added at one end and an element is removed from that end only. Resizable array/ LL.
@@ -82,6 +219,42 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 - `.pop()`: O(1)
 - `.peek()`: O(1)
 
+```js
+class Stack {
+    #top = null;
+    #count = 0;
+
+    push(value) {
+        const node = new LinkedListNode(value);
+        node.next = this.#top;
+        this.#top = node;
+        this.#count++;
+    }
+
+    pop() {
+        if (this.isEmpty) throw new Error('Stack is empty!');
+        
+        const topValue = this.#top.value;
+        this.#top = this.#top.next;
+        this.#count--;
+        return topValue;
+        
+    }
+
+    peek() {
+        if (this.isEmpty) throw new Error('Stack is empty!');
+        return this.#top.value;
+    }
+    
+    get count() {
+        return this.#count;
+    }
+    get isEmpty() {
+        return this.#top? false : true;
+    }
+}
+```
+
 ##### Queue
 
 - A queue is a linear data structure that stores data elements in First-In/First Out(FIFO) manner, i.e., the element that’s inserted first will be removed first. RArr/LL/DoubleStack
@@ -89,6 +262,51 @@ Array lists (+ dynamic), linked lists, stacks, queues.
 - `.enqueue(value)`: O(1); at `tail`
 - `.dequeue()`: O(1); from `head`
 - `.peek()`: O(1) at `head`
+
+```js
+class Queue {
+    #front = null;
+    #back = null;
+
+    #count = 0;
+    
+
+    enqueue(value) {
+        const node = new LinkedListNode(value);
+        if (this.isEmpty) {
+            this.#front = node;
+            this.#back = node;
+        } else {
+            this.#back.next = node;
+            this.#back = node;
+        }
+        this.#count++;      
+
+    }
+
+    dequeue() {
+        if (this.isEmpty) throw new Error('Queue is empty!');
+        const value  = this.#front.value;
+        this.#front = this.#front.next;
+        this.#count--;
+        return value;
+    }
+
+    peek() {
+        if (this.isEmpty) throw new Error('Queue is empty!');
+        return this.#front.value;
+    }
+
+    
+    get isEmpty() {
+        return this.#front? false : true;
+    }
+
+    get count() {
+        return this.#count;
+    }
+}
+```
 
 ### Hashing
 
@@ -133,4 +351,111 @@ During insertion, the goal of collision resolution is to find a free slot in the
 - ***Double Hashing***
 
 ![](https://gitlab.com/limeohme/theoretical-preparation/-/raw/main/images/double-shashing.png)
+
+### Recursion 
+
+
+
+
+![](https://pbs.twimg.com/tweet_video_thumb/C9_SP6KUIAAkYb-.jpg)
+
+That's infinite, just sayin'.
+
+In computer science, **`recursion`** is a method of solving a computational problem where the solution depends on solutions to smaller instances of the same problem. Recursion solves such recursive problems by using functions that call themselves from within their own code.
+
+A recursive function definition has one or more `base cases`, meaning input(s) for which the function produces a result trivially (without recurring), and one or more `recursive cases`, meaning input(s) for which the program recurs (calls itself). For example, the factorial function can be defined recursively by the equations 0! = 1 and, for all n > 0, n! = n(n − 1)!. Neither equation by itself constitutes a complete definition; the first is the base case, and the second is the recursive case. Because the base case breaks the chain of recursion, it is sometimes also called the "terminating case".
+
+[Recursive functions, general](https://plato.stanford.edu/entries/recursive-functions/)
+
+##### Direct/Indirect Recursion
+
+A function `func` is called direct recursive if it calls the same function `func`. A function `func` is called indirect recursive if it calls another function `other_func` and `other_func` calls `func` directly or indirectly. 
+
+```js
+function func() {
+    // do something
+
+    func()
+
+    // something else
+}
+```
+
+```js
+function func() {
+    // do something
+
+    other_func()
+
+    // something else
+}
+function other_func() {
+    // do something
+
+    func()
+
+    // something else
+}
+```
+
+##### Tail-recursion
+
+A recursive function is tail recursive when a recursive call is the last thing executed by the function (after returning there is nothing left to evaluate).
+
+```js
+// tail
+function func(n) {
+    if (n === 0) {
+        return;
+    } else {
+        console.log(n);
+        return func(n-1);
+    }
+}
+
+func(3); 
+```
+```js
+
+function func(n) {
+    if (n === 0) {
+        return;
+    } else {
+        func(n-1);
+        console.log(n);
+    }
+}
+
+func(3); 
+```
+##### Memoization
+In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+```js
+storage = {param1: result1, param2: result2}
+
+function func(params) {
+    if (params in storage) return storage[params];
+    else: compute and store;
+}
+```
+
+##### Backtracking
+
+Backtracking is a general algorithm for finding solutions to some computational problems, notably constraint satisfaction problems, that incrementally builds candidates to the solutions, and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly be completed to a valid solution.
+
+*constraint satisfaction problems*: are mathematical questions defined as a set of objects whose state must satisfy a number of constraints or limitations (sudokus, crosswords).  
+
+The classic textbook example of the use of backtracking is the eight queens puzzle, that asks for all arrangements of eight chess queens on a standard chessboard so that no queen attacks any other. In the common backtracking approach, the partial candidates are arrangements of k queens in the first k rows of the board, all in different rows and columns. Any partial solution that contains two mutually attacking queens can be abandoned.
+
+[8 Queens](https://www.interviewbit.com/blog/8-queens-problem/)
+[Knight Through the Board](https://www.freecodecamp.org/news/backtracking-algorithms-explained/)
+
+
+
+
+
+
+
+
 
