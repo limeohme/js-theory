@@ -449,6 +449,7 @@ Backtracking is a general algorithm for finding solutions to some computational 
 The classic textbook example of the use of backtracking is the eight queens puzzle, that asks for all arrangements of eight chess queens on a standard chessboard so that no queen attacks any other. In the common backtracking approach, the partial candidates are arrangements of k queens in the first k rows of the board, all in different rows and columns. Any partial solution that contains two mutually attacking queens can be abandoned.
 
 [8 Queens](https://www.interviewbit.com/blog/8-queens-problem/)
+
 [Knight Through the Board](https://www.freecodecamp.org/news/backtracking-algorithms-explained/)
 
 
