@@ -453,7 +453,34 @@ The classic textbook example of the use of backtracking is the eight queens puzz
 
 [Knight Through the Board](https://www.freecodecamp.org/news/backtracking-algorithms-explained/)
 
+### Trees
 
+#### Binary Tree 
+
+In computer science, a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. 
+
+![](https://c.tenor.com/-GnZ6NOpsXkAAAAC/thats-all-folks.gif)
+
+#### Binary Search Tree
+
+In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is a rooted binary tree data structure whose internal nodes each store a key greater than all the keys in the node's left subtree and less than those in its right subtree. The time complexity of operations on the binary search tree is directly proportional to the height of the tree.
+
+<style data-mw-deduplicate="TemplateStyles:r1066479718">.mw-parser-output .infobox-subbox{padding:0;border:none;margin:-3px;width:auto;min-width:100%;font-size:100%;clear:none;float:none;background-color:transparent}.mw-parser-output .infobox-3cols-child{margin:auto}.mw-parser-output .infobox .navbar{font-size:100%}body.skin-minerva .mw-parser-output .infobox-header,body.skin-minerva .mw-parser-output .infobox-subheader,body.skin-minerva .mw-parser-output .infobox-above,body.skin-minerva .mw-parser-output .infobox-title,body.skin-minerva .mw-parser-output .infobox-image,body.skin-minerva .mw-parser-output .infobox-full-data,body.skin-minerva .mw-parser-output .infobox-below{text-align:center}</style><table class="infobox"><tbody><tr><th colspan="2" class="infobox-above">Binary search tree</th></tr><tr><th scope="row" class="infobox-label"><a href="/wiki/List_of_data_structures" title="List of data structures">Type</a></th><td class="infobox-data">tree</td></tr><tr><th scope="row" class="infobox-label">Invented</th><td class="infobox-data">1960</td></tr><tr><tr><th colspan="2" class="infobox-header"><a href="/wiki/Time_complexity" title="Time complexity">Time complexity</a> in <a href="/wiki/Big_O_notation" title="Big O notation">big O notation</a></th></tr><tr><td colspan="2" class="infobox-full-data"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1066479718"/><table class="infobox-subbox infobox-3cols-child"><tbody><tr><th scope="row" class="infobox-label" style="white-space:nowrap;">Algorithm</th><td class="infobox-data infobox-data-a">
+</td><td class="infobox-data infobox-data-b">
+<b>Average</b></td><td class="infobox-data infobox-data-c">
+<b>Worst case</b></td></tr><tr><th scope="row" class="infobox-label" style="white-space:nowrap;">Space</th><td class="infobox-data infobox-data-a">
+</td><td class="infobox-data infobox-data-b">
+<span class="texhtml"><span class="texhtml">O(<i>n</i>)</span></span></td><td class="infobox-data infobox-data-c">
+<span class="texhtml"><span class="texhtml">O(<i>n</i>)</span></span></td></tr><tr><th scope="row" class="infobox-label" style="white-space:nowrap;">Search</th><td class="infobox-data infobox-data-a">
+</td><td class="infobox-data infobox-data-b">
+<span class="texhtml"><span class="texhtml">O(log <i>n</i>)</span></span></td><td class="infobox-data infobox-data-c">
+<span class="texhtml"><span class="texhtml">O(<i>n</i>)</span></span></td></tr><tr><th scope="row" class="infobox-label" style="white-space:nowrap;">Insert</th><td class="infobox-data infobox-data-a">
+</td><td class="infobox-data infobox-data-b">
+<span class="texhtml"><span class="texhtml">O(log <i>n</i>)</span></span></td><td class="infobox-data infobox-data-c">
+<span class="texhtml"><span class="texhtml">O(<i>n</i>)</span></span></td></tr><tr><th scope="row" class="infobox-label" style="white-space:nowrap;">Delete</th><td class="infobox-data infobox-data-a">
+</td><td class="infobox-data infobox-data-b">
+<span class="texhtml"><span class="texhtml">O(log <i>n</i>)</span></span></td><td class="infobox-data infobox-data-c">
+<span class="texhtml"><span class="texhtml">O(<i>n</i>)</span></span></td></tr></tbody></table></td></tr></tbody></table>
 
 
 
