@@ -526,3 +526,37 @@ In computer science, a binary search tree (BST), also called an ordered or sorte
 A `balanced binary tree`, also referred to as a height-balanced binary tree, is defined as a binary tree in which the height of the left and right subtree of any node differ by not more than 1.
 
 ![](https://gitlab.com/limeohme/theoretical-preparation/-/raw/main/images/BST.png)
+
+#### Breadth-first search
+
+Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored.
+
+For example, in a chess endgame a chess engine may build the game tree from the current position by applying all possible moves, and use breadth-first search to find a win position for white. Implicit trees (such as game trees or other problem-solving trees) may be of infinite size; breadth-first search is guaranteed to find a solution node if one exists.
+
+In contrast, (plain) depth-first search, which explores the node branch as far as possible before backtracking and expanding other nodes, may get lost in an infinite branch and never make it to the solution node. Iterative deepening depth-first search avoids the latter drawback at the price of exploring the tree's top parts over and over again. On the other hand, both depth-first algorithms get along without extra memory.
+
+```
+BFS (G, s)                   //Where G is the graph and s is the source node
+      let Q be queue.
+      Q.enqueue( s ) //Inserting s in queue until all its neighbour vertices are marked.
+
+      mark s as visited.
+      while ( Q is not empty)
+           //Removing that vertex from queue,whose neighbour will be visited now
+           v  =  Q.dequeue( )
+
+          //processing all the neighbours of v  
+          for all neighbours w of v in Graph G
+               if w is not visited 
+                        Q.enqueue( w )             //Stores w in Q to further visit its neighbour
+                        mark w as visited.
+```
+
+The time complexity of BFS is O(V + E), where V is the number of nodes and E is the number of edges.
+
+#### Depth-first Search 
+
+Depth-first search is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking. So the basic idea is to start from the root or any arbitrary node and mark the node and move to the adjacent unmarked node and continue this loop until there is no unmarked adjacent node. Then backtrack and check for other unmarked nodes and traverse them. Finally, print the nodes in the path.
+
+
+
