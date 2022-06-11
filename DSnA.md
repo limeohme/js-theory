@@ -454,6 +454,12 @@ The classic textbook example of the use of backtracking is the eight queens puzz
 [Knight Through the Board](https://www.freecodecamp.org/news/backtracking-algorithms-explained/)
 
 ### Trees
+A tree is a hierarchical data structure defined as a collection of nodes. Nodes represent value and nodes are connected by edges. A tree has the following properties:
+
+- The tree has one node called root. The tree originates from this, and hence it does not have any parent.
+- Each node has one parent only but can have multiple children.
+- Each node is connected to its children via edge.
+
 **Node**
 A node is an entity that contains a key or value and pointers to its child nodes.
 
@@ -561,3 +567,4 @@ Depth-first search is an algorithm for traversing or searching tree or graph dat
 
 
 ![](https://gitlab.com/limeohme/theoretical-preparation/-/raw/main/images/DFSnBFS.png)
+
