@@ -491,6 +491,8 @@ The height of a Tree is the height of the root node or the depth of the deepest 
 
 The degree of a node is the total number of branches of that node.
 
+[Trees](https://www.mygreatlearning.com/blog/understanding-trees-in-data-structures/#:~:text=A%20tree%20is%20a%20hierarchical,does%20not%20have%20any%20parent.)
+
 #### Binary Tree 
 
 In computer science, a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.
