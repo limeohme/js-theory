@@ -570,3 +570,5 @@ Depth-first search is an algorithm for traversing or searching tree or graph dat
 
 ![](https://gitlab.com/limeohme/theoretical-preparation/-/raw/main/images/DFSnBFS.png)
 
+<!-- https://codepen.io/beaucarnes/pen/ryKvEQ?editors=0011 -->
+
