@@ -110,3 +110,5 @@ async function waitingForExapmy(){
 #### The event loop
 
 [DOCS: Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
+Messages in queue get processed (if any) => call corresponding functions => get frames on stack => return => get popped out => and so on... 
