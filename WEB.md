@@ -87,7 +87,7 @@ async function awaitableExampy(n){
 }
 
 async function waitingForExapmy(){
-    return await awaitableExampy(6);
+    return awaitableExampy(6);
 }
 
 (async function logger() {
@@ -100,7 +100,7 @@ async function awaitableExampy(n){
 }
 
 async function waitingForExapmy(){
-    return await awaitableExampy(6);
+    return awaitableExampy(6);
 }
 
 (async function logger() {
