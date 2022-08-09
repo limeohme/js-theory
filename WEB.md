@@ -319,4 +319,15 @@ CSS layout is mostly based on the box model. Each box taking up space on your pa
 ![](https://static.javatpoint.com/csspages/images/types-of-css.png)
 
 
+### DATA TRANSFER, REQUESTS
 
+A **protocol** is a system of rules that define how data is exchanged within or between computers. Communications between devices require that the devices agree on the format of the data that is being exchanged. The set of rules that defines a format is called a protocol.
+
+A ***network protocol*** is a set of established rules that dictate how to format, transmit and receive data so that computer network devices -- from servers and routers to endpoints -- can communicate, regardless of the differences in their underlying infrastructures, designs or standards.
+
+To successfully send and receive information, devices on both sides of a communication exchange must accept and follow protocol conventions. In networking, support for protocols can be built into software, hardware or both.
+
+#### HTTP
+
+[OVERVIEW](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
+[FETCH](https://web.dev/introduction-to-fetch/)
