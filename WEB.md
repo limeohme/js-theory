@@ -177,6 +177,7 @@ Node and web browsers, both executes JavaScript, but Node does that in server si
 
 <br/>
 <br/>
+
 #### HTML: HyperText Markup Language
 
 HTML is a markup language that defines the structure of your content. HTML consists of a series of elements, which you use to enclose, or wrap, different parts of the content to make it appear a certain way, or act a certain way. The enclosing tags can make a word or image hyperlink to somewhere else, can italicize words, can make the font bigger or smaller, and so on. For example, take the following line of content:
@@ -213,3 +214,109 @@ An attribute should always have the following:
 - ***body></body*** — the **body>** element. This contains all the content that you want to show to web users when they visit your page, whether that's text, images, videos, games, playable audio tracks, or whatever else.
 
 **^link rel="stylesheet" href="mystyle.css">** external sheet
+
+#### CSS: Cascading Style Sheets
+
+Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.
+
+CSS is among the core languages of the open web and is standardized across Web browsers according to W3C specifications.
+
+CSS is a style sheet language. CSS is what you use to selectively style HTML elements. For example, this CSS selects paragraph text, setting the color to red and so on:
+
+```css
+p {
+  color: red;
+  background-color: #f9fbf2;
+  padding-left: 10px;
+  margin-top: 6rem;
+}
+```
+
+##### Anatomy of a CSS ruleset
+
+![](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/css-declaration-small.png)
+
+<table class="standard-table no-markdown">
+  <thead>
+    <tr>
+      <th scope="col">Selector name</th>
+      <th scope="col">What does it select</th>
+      <th scope="col">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Element selector (sometimes called a tag or type selector)</td>
+      <td>All HTML elements of the specified type.</td>
+      <td><code>p</code><br>selects <code>&lt;p&gt;</code></td>
+    </tr>
+    <tr>
+      <td>ID selector</td>
+      <td>
+        The element on the page with the specified ID. On a given HTML page,
+        each id value should be unique.
+      </td>
+      <td>
+        <code>#my-id</code><br>selects <code>&lt;p id="my-id"&gt;</code> or
+        <code>&lt;a id="my-id"&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Class selector</td>
+      <td>
+        The element(s) on the page with the specified class. Multiple instances
+        of the same class can appear on a page.
+      </td>
+      <td>
+        <code>.my-class</code><br>selects
+        <code>&lt;p class="my-class"&gt;</code> and
+        <code>&lt;a class="my-class"&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Attribute selector</td>
+      <td>The element(s) on the page with the specified attribute.</td>
+      <td>
+        <code>img[src]</code><br>selects
+        <code>&lt;img src="myimage.png"&gt;</code> but not
+        <code>&lt;img&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Pseudo-class selector</td>
+      <td>
+        The specified element(s), but only when in the specified state. (For
+        example, when a cursor hovers over a link.)
+      </td>
+      <td>
+        <code>a:hover</code><br>selects <code>&lt;a&gt;</code>, but only when
+        the mouse pointer is hovering over the link.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+<br/>
+
+##### CSS basic box model
+
+![](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/box-model.png)
+
+CSS layout is mostly based on the box model. Each box taking up space on your page has properties like:
+
+- **padding**, the space around the content. In the example below, it is the space around the paragraph text.
+- **border**, the solid line that is just outside the padding.
+- **margin**, the space around the outside of the border.
+
+**[THE BOX MODEL, BOX-SIZING](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)**
+
+**[FLEXBOX](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)**
+
+**[SELECTOR SPECIFICITY](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)**
+
+![](https://d1rytvr7gmk1sx.cloudfront.net/wp-content/uploads/2013/11/CSSSpecificityFigA110513.gif)
+![](https://static.javatpoint.com/csspages/images/types-of-css.png)
+
+
+
