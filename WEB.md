@@ -588,3 +588,18 @@ export const loadTrendingGifs = async (limit = 20, offset = 0) => {
 
 **[WHAT's an API](https://www.cleveroad.com/blog/what-is-an-api/)
 [RESTfulness](https://restfulapi.net/)**
+
+#### URL
+
+![](https://blog.hubspot.com/hs-fs/hubfs/Parts%20of%20a%20URL.png?width=650&name=Parts%20of%20a%20URL.png)
+
+A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier ([URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)), although many people use the two terms interchangeably. URLs occur most commonly to reference web pages (HTTP) but are also used for file transfer (FTP), email (mailto), database access (JDBC), and many other applications.
+
+A URL is nothing more than the address of a given unique resource on the Web. In theory, each valid URL points to a unique resource. Such resources can be an HTML page, a CSS document, an image, etc. In practice, there are some exceptions, the most common being a URL pointing to a resource that no longer exists or that has moved. As the resource represented by the URL and the URL itself are handled by the Web server, it is up to the owner of the web server to carefully manage that resource and its associated URL.
+
+![](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL/mdn-url-all.png)
+
+**[MDN DEETS](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)**
+
+![](https://danielmiessler.com/images/url-structure-and-scheme-2022.png)
+
