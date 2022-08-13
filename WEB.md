@@ -567,6 +567,19 @@ Ajax is not a technology, but rather a programming concept.
 **[BASICS](https://web.dev/introduction-to-fetch/)
 [FETCH API DOCS](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)**
 
+###### My lonely fetch request 🥺
+```js
+export const loadTrendingGifs = async (limit = 20, offset = 0) => {
+  const API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY_LM}&limit=${limit}&offset=${offset}&rating=g`;
+  const response = await fetch(API_URL);
+
+  if (!response.ok) {
+    alert(`An error occurred: ${response.status}`);
+  }
+  return response.json();
+};
+```
+
 [BLOBS](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
 
 ### API 
