@@ -319,6 +319,191 @@ CSS layout is mostly based on the box model. Each box taking up space on your pa
 ![](https://static.javatpoint.com/csspages/images/types-of-css.png)
 
 
+### DO-DO-DO-DOMMM DO-DO-DO-DOMMM
+
+**The Document Object Model (DOM)** is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
+
+The DOM represents a document with a logical tree. Each branch of the tree ends in a node, and each node contains objects. DOM methods allow programmatic access to the tree. With them, you can change the document's structure, style, or content.
+
+Nodes can also have event handlers attached to them. Once an event is triggered, the event handlers get executed.
+
+A web page is a document that can be either displayed in the browser window or as the HTML source. In both cases, it is the same document but the Document Object Model (DOM) representation allows it to be manipulated. As an object-oriented representation of the web page, it can be modified with a scripting language such as JavaScript.
+
+
+![](https://www.freecodecamp.org/news/content/images/2022/06/DOM-tree.png)
+
+[VERY TECHNICAL](https://www.w3.org/TR/DOM-Level-1/introduction.html)
+[DOCUMENT](https://javascript.info/document)
+
+```js
+document.querySelector(selector)
+document.querySelectorAll(selector)
+document.querySelector(selector).innerHTML = HTMLstring
+element.setAttribute()
+element.getAttribute()
+element.addEventListener()
+document.getElementById(id)
+
+const id = '#id'; 
+const class = '.class'; 
+
+const heading = document.createElement("h1");
+         const heading_text = document.createTextNode("Big Head!");
+         heading.appendChild(heading_text);
+         document.body.appendChild(heading);
+```
+
+```js
+/**
+ * Shorthand for document.querySelector
+ * @param {string} selector
+ * @return {Element}
+ */
+export const q = (selector) => document.querySelector(selector);
+
+/**
+ * Shorthand for document.querySelectorAll
+ * @param {string} selector
+ * @return {NodeLists<Element>}
+ */
+export const qs = (selector) => document.querySelectorAll(selector);
+
+export const renderAdditionalTrending = async (limit, offset) => {
+  const moreTrendingGifs = await loadTrendingGifs(limit, offset);
+
+  q(`.${GIF_CONTAINER_SELECTOR}`).innerHTML += toMultipleGIFsView(
+    moreTrendingGifs.data,
+  );
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  let offsetTrending = 0;
+  const limit = 20;
+
+  document.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('nav-link')) {
+      await loadPage(event.target.getAttribute('data-target-page'));
+    }
+
+    if (event.target.classList.contains('logo')) {
+      await renderHomePage();
+      event.target.classList.add('active');
+    }
+
+    if (event.target.classList.contains('theme')) {
+      changeThemes();
+    }
+
+    if (event.target.classList.contains('suggestion')) {
+      document.body.style.backgroundImage = 'none';
+      renderSearchItems(event.target.innerHTML);
+      // setSearchBarInnerHTML(event.target.innerHTML);
+      setSearchBarInnerHTML();
+      hideSuggestions();
+      q('input#search').focus();
+    }
+
+    if (event.target.classList.contains('toUpload')) {
+      console.log('in nav');
+      console.log(event.target);
+      await loadPage(UPLOAD);
+    }
+
+    // toggle favorite event
+    if (event.target.classList.contains('favorite')) {
+      toggleFavoriteStatus(event.target.getAttribute('data-gif-id'));
+    }
+  });
+
+  document.addEventListener('change', (event) => {
+    if (event.target.id === 'file-upload') {
+      const file = document.getElementById('file-upload').files[0];
+      uploadsHandler(file);
+    }
+  });
+
+  // search events
+  q('input#search').addEventListener('keypress', (event) => {
+    setActiveNav();
+    // q(`#${CONTAINER_SELECTOR}`).innerHTML = '';
+
+    if (event.key === ENTER_KEY) {
+      document.body.style.backgroundImage = 'none';
+      // hideSuggestions();
+      renderSearchItems(event.target.value);
+
+      hideSuggestions();
+      setSearchBarInnerHTML();
+    }
+  });
+
+  // search suggestions
+  q('input#search').addEventListener('keyup', (event) => {
+    renderSearchSuggestion(event.target.value);
+  });
+
+  setSearchBarInnerHTML;
+  document.body.addEventListener('click', () => {
+    hideSuggestions();
+    setSearchBarInnerHTML();
+  });
+
+  // load landing
+  await renderHomePage();
+
+  // infinite scroll on trending
+  window.onscroll = debounce(async function () {
+    const isActive = document
+      .querySelector('[data-target-page="trending"]')
+      .classList.contains('active');
+    const isPageEnd =
+      window.scrollY >
+      document.documentElement.offsetHeight - window.outerHeight;
+
+    if (isActive && isPageEnd && !q(LOGO).classList.contains('active')) {
+      try {
+        offsetTrending += limit;
+        if (offsetTrending === 4999) offsetTrending = 0;
+        renderAdditionalTrending(limit, offsetTrending);
+      } catch (error) {
+        alert(error);
+      }
+    }
+  }, 600);
+});
+
+```
+
+##### Document & Window
+
+- **Document Object**: The document object represent a web page that is loaded in the browser. By accessing the document object, we can access the element in the HTML page. With the help of document objects, we can add dynamic content to our web page. The document object can be accessed with a window.document or just document.
+- **Window Object**: The window object is the topmost object of the DOM hierarchy. It represents a browser window or frame that displays the contents of the webpage. Whenever a window appears on the screen to display the contents of the document, the window object is created. 
+[DOCU & WIN](https://www.geeksforgeeks.org/differences-between-document-and-window-objects/)
+<table><thead><tr><th><h4 style="text-align:center"><strong>document</strong></h4></th><th><h4 style="text-align:center"><strong>window</strong></h4></th></tr></thead><tbody><tr><td><p style="text-align:justify">It represents any HTML document or web page that is loaded in the browser.</p></td><td><p style="text-align:justify">It represents a browser window or frame that displays the contents of the webpage. &nbsp;&nbsp;</p></td></tr><tr><td><p style="text-align:justify">It is loaded inside the window.</p></td><td><p style="text-align:justify">It is the very first object that is loaded in the browser.</p></td></tr><tr><td><p style="text-align:justify">It is the object of window property.</p></td><td><p style="text-align:justify">It is the object of the browser.</p></td></tr><tr><td><p style="text-align:justify">All the tags, elements with attributes in HTML are part of the document.</p></td><td><p style="text-align:justify">Global objects, functions, and variables of JavaScript are members of the window object.</p></td></tr><tr><td><p style="text-align:justify">We can access the document from a window using the window. document</p></td><td><p style="text-align:justify">We can access the window from the window only. i.e. window.window</p></td></tr><tr><td><p style="text-align:justify">The document is part of BOM (browser object model) and dom (Document object model)</p></td><td><p style="text-align:justify">The window is part of BOM, not DOM.</p></td></tr><tr><td><p style="text-align:justify">Properties of document objects such as title, body, cookies, etc can also be accessed by a window like this window. document.title</p></td><td><p style="text-align:justify">Properties of the window object cannot be accessed by the document object.</p></td></tr><tr><td><p>syntax:</p><p>&nbsp; &nbsp; &nbsp; document.propertyname;</p></td><td><p>syntax:</p><p>window.propertyname;</p></td></tr><tr><td><p>example:</p><p>&nbsp; &nbsp; &nbsp;document.title : &nbsp;will return the title of the document</p></td><td><p>example:</p><p>window.innerHeight : will return the height of the content area of the browser</p></td></tr></tbody></table>
+
+##### Event Bubbling and Capturing
+
+[EVENTS](https://javascript.info/events)
+[UI EVENTS, Mice & Stuff](https://javascript.info/event-details)
+
+
+When an event happens – the most nested element where it happens gets labeled as the “target element” (event.target).
+
+- Then the event moves down from the document root to event.target, calling handlers assigned with addEventListener(..., true) on the way (true is a shorthand for {capture: true}).
+- Then handlers are called on the target element itself.
+- Then the event bubbles up from event.target to the root, calling handlers assigned using on<event>, HTML attributes and addEventListener without the 3rd argument or with the 3rd argument false/{capture:false}.
+
+Each handler can access event object properties:
+
+- **event.target** – the deepest element that originated the event.
+- **event.currentTarget** (=this) – the current element that handles the event (the one that has the handler on it)
+- **event.eventPhase** – the current phase (capturing=1, target=2, bubbling=3).
+
+Any event handler can stop the event by calling **event.stopPropagation()**, but that’s not recommended, because we can’t really be sure we won’t need it above, maybe for completely different things.
+
+The capturing phase is used very rarely, usually we handle events on bubbling.
+
+![](https://y.yarn.co/3b84c43f-3096-4737-a2cb-05f8447b1d66_text.gif)
 ### DATA TRANSFER, REQUESTS
 
 A **protocol** is a system of rules that define how data is exchanged within or between computers. Communications between devices require that the devices agree on the format of the data that is being exchanged. The set of rules that defines a format is called a protocol.
@@ -331,3 +516,62 @@ To successfully send and receive information, devices on both sides of a communi
 
 [OVERVIEW](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
 [FETCH](https://web.dev/introduction-to-fetch/)
+
+**HTTP** is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
+
+Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client, usually a Web browser, are called ***requests*** and the messages sent by the server as an answer are called ***responses***.
+
+ It is an application layer protocol that is sent over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP), or over a [TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS)-encrypted TCP connection, though any reliable transport protocol could theoretically be used. Due to its extensibility, it is used to not only fetch hypertext documents, but also images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.
+
+<h5> HTTP vs. HTTPS </h5>
+HTTPS is the use of Secure Sockets Layer (SSL) or Transport Layer Security (TLS) as a sublayer under regular HTTP application layering. HTTPS encrypts and decrypts user HTTP page requests as well as the pages that are returned by the web server. It also protects against eavesdropping and man-in-the-middle (MitM) attacks. HTTPS was developed by Netscape. Migrating from HTTP to HTTPS is considered beneficial, as it offers an added layer of security and trust.
+
+##### Requests
+
+![HTTP Request Anatomy](https://i.stack.imgur.com/n9Gwe.png)
+
+- An **HTTP method**, usually a verb like GET, POST, or a noun like OPTIONS or HEAD that defines the operation the client wants to perform. Typically, a client wants to fetch a resource (using GET) or post the value of an HTML form (using POST), though more operations may be needed in other cases.
+- The path of the resource to fetch; the URL of the resource stripped from elements that are obvious from the context, for example without the protocol (http://), the domain (here, developer.mozilla.org), or the TCP port (here, 80).
+- The version of the HTTP protocol.
+- Optional headers that convey additional information for the servers.
+- A body, for some methods like POST, similar to those in responses, which contain the resource sent.
+
+
+##### Responses
+
+![HTTP Response Anatomy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview/http_response.png)
+
+- The version of the HTTP protocol they follow.
+- A status code, indicating if the request was successful or not, and why.
+- A status message, a non-authoritative short description of the status code.
+- HTTP headers, like those for requests.
+- Optionally, a body containing the fetched resource.
+
+![HTTP Status Codes](https://kblinux.com/wp-content/uploads/2021/07/http-status-codes-1024x892.jpeg)
+
+[STATUS CODES](https://www.restapitutorial.com/httpstatuscodes.html)
+
+
+##### AJAX 
+
+Ajax (also AJAX /ˈeɪdʒæks/; short for "Asynchronous JavaScript and XML") is a set of web development techniques that uses various web technologies on the client-side to create asynchronous web applications. With Ajax, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behaviour of the existing page. By decoupling the data interchange layer from the presentation layer, Ajax allows web pages and, by extension, web applications, to change content dynamically without the need to reload the entire page. In practice, modern implementations commonly utilize JSON instead of XML.
+
+Ajax is not a technology, but rather a programming concept.
+
+![](https://www.w3schools.com/xml/ajax.gif)
+
+#### fetch( )
+
+![](https://i.pinimg.com/originals/60/a0/f1/60a0f10e9227fa654939884d40c2d8f3.gif)
+
+**[BASICS](https://web.dev/introduction-to-fetch/)
+[FETCH API DOCS](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)**
+
+[BLOBS](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+
+### API 
+
+![](https://www.cleveroad.com/images/article-previews/40ca78a7a9db7adfb6bb861fc6b8910ae2ef4bb79f5508007d166f01df5c1038.png)
+
+**[WHAT's an API](https://www.cleveroad.com/blog/what-is-an-api/)
+[RESTfulness](https://restfulapi.net/)**
