@@ -24,6 +24,7 @@ Any function that calls a function that works asynchronously must itself be asyn
 A **promise** is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’s not resolved (e.g., a network error occurred). A promise may be in one of 3 possible states: `fulfilled`, `rejected`, or `pending`. A promise is **settled** if it’s not pending (it has been resolved or rejected). Promise users can attach callbacks to handle the fulfilled value or the reason for rejection.
 
 **[What Is a Promise](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)**
+**[Promisesss](https://web.dev/promises/?gclid=Cj0KCQjwl92XBhC7ARIsAHLl9akniUe24enj6Y4mG72YefsCmnmiJv8oUbL7YiqHq-4-g9FwH4IKU7AaAj86EALw_wcB)
 
 **States:**
 Fulfilled: `onFulfilled()` will be called (e.g., resolve() was called)
@@ -46,6 +47,8 @@ The `.then()` method must comply with these rules:
 - If either `onFulfilled` or `onRejected` throws an exception e, promise2 must be rejected with e as the reason.
 - If `onFulfilled` is not a function and promise1 is fulfilled, promise2 must be fulfilled with the same value as promise1.
 - If `onRejected` is not a function and promise1 is rejected, promise2 must be rejected with the same reason as promise1.
+
+![](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
 
 ```js
 const promisedTimeout = new Promise((res, rej) => setTimeout(res, 5000));
