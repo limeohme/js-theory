@@ -905,7 +905,7 @@ function fallInLove(){
  
 ```
  console.log(fallInLove()); // ReferenceError: Cannot access 'fallInLove' before initialization
- var fallInLove = () => {
+ const fallInLove = () => {
   let love = true;
   if (love === true) {
     happy = null;
