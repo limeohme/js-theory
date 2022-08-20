@@ -368,4 +368,4 @@ export default function Authenticated({ children }) {
 
 
 
-
+**[Why React re-renders](https://www.joshwcomeau.com/react/why-react-re-renders/)**
