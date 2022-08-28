@@ -803,8 +803,7 @@ console.log(love) // false
 Now we can read the value of happy from the outside (even if we haven't actually assigned a meaningful value to it because we are not sure how we feel)
 
 ###### Hoisting `var`
-`vars` are hoisted with declaration but without the initializing value if one was given; read from above they equal `undefined`
-
+`vars` are hoisted with initialization as `undefined`
 ```
 console.log(happy) // undefined
 let love = true;
@@ -817,7 +816,7 @@ if (love === true) {
 ```
 ##### **Function scope**
 
-- Functions create a scope that is indipendent from the outside field. That said, they can still look for variables on the outside, but the variables declared inside them can only be reached from the inside
+- Functions create a scope that is independent from the outside field. That said, they can still look for variables on the outside, but the variables declared inside them can only be reached from the inside
 
 ```
 console.log(happy); // ReferenceError: happy is not defined
