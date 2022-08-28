@@ -1,5 +1,12 @@
  # <h1 align="center"> JavaScript ❤️ Basic Theory (as read by Liya) </h1>
 
+ JavaScript (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well. It is a prototype-based, multi-paradigm scripting language that is dynamic, and supports object-oriented, imperative, and functional programming styles.
+
+ JavaScript runs on the client side of the web, which can be used to design / program how the web pages behave on the occurrence of an event. JavaScript is an easy to learn and also powerful scripting language, widely used for controlling web page behavior.
+
+ - First-class Function
+A programming language is said to have First-class functions when functions in that language are treated like any other variable. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+
 ## JS Core Theoretical Prep
 ### Loops:
 #### Definition: 
@@ -774,7 +781,7 @@ console.log(happy) //ReferenceError: happy is not defined
 
 Hoisting allows functions to be safely used in code before they are declared.
 ###### Hoisting `let` & `const`
-`lets` and `consts` are hoisted without actual definition and will throw an error if you tried to reach them "above" their declaration point
+`lets` and `consts` are hoisted without initialization and will throw an error if you tried to reach them "above" their declaration point
 `ReferenceError: Cannot access 'someVariable' before initialization`
 
 `var`
@@ -796,7 +803,7 @@ console.log(love) // false
 Now we can read the value of happy from the outside (even if we haven't actually assigned a meaningful value to it because we are not sure how we feel)
 
 ###### Hoisting `var`
-`vars` are hoisted with declaration but without the initializing value if one was given; read from above they equal `undefined`
+`vars` are hoisted with initialization but are initialized as `undefined`
 
 ```
 console.log(happy) // undefined
